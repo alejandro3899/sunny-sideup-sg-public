@@ -1,0 +1,74 @@
+import Link from "next/link";
+import Timezone from "@/components/Timezone";
+import { Footer as FooterTypes } from "@/types/cms";
+
+interface FooterProps {
+  content: FooterTypes;
+}
+
+export default function Footer({ content }: FooterProps) {
+  return (
+    <footer className="bg-white dark:bg-bgDark dark:text-white mt-12 pt-8 pb-6 min-h-[450px] flex flex-col">
+      <div className="cont flex flex-col justify-between h-full flex-1">
+        <div className="grid lg:grid-cols-10 gap-8 lg:gap-4">
+          {/* Footer Col 1 */}
+          <nav className="col-span-2 grid gap-1 content-start">
+            {content.footerNavigation.map((item) => (
+              <Link key={item.id} href={item.url}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Footer Col 2 */}
+          <div className="col-span-4 grid gap-6 content-start">
+            {content.footerLinks.map((item) => (
+              <div key={item.id}>
+                <div className="small-title mb-1">{item.heading}</div>
+                <h3>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="break-all leading-none py-1 block"
+                  >
+                    {item.label}
+                  </a>
+                </h3>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer Col 3 */}
+          <div className="col-span-4 text-smaller">
+            <div className="mb-5 small-title">Timezones</div>
+            <div className="grid gap-6">
+              {content.timezones.map((item) => (
+                <Timezone
+                  key={item.id}
+                  timezone={item.timezone}
+                  label={item.label}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="grid sm:grid-cols-10 gap-4 mt-8 small-title">
+          <div className="col-span-2">
+            <Link href="/">SSU</Link>
+          </div>
+          <div className="col-span-4 flex gap-6">
+            {content.footerLegalLinks.map((item) => (
+              <Link key={item.id} href={item.url}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div className="col-span-4">{content.copyright}</div>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@layer base {
+  h1 {
+    @apply text-5xl font-medium leading-none tracking-tighter sm:text-6xl;
+  }
+  h2 {
+    @apply text-5xl font-medium leading-tightest;
+  }
+  h3 {
+    @apply text-3xl font-bold leading-tightest;
+  }
+  h4 {
+    @apply text-2xl leading-none tracking-tighter;
+  }
+  h5 {
+    @apply text-lg leading-tightest tracking-tighter;
+  }
+  h6 {
+    @apply text-sm font-medium leading-none tracking-tighter;
+  }
+  p {
+    @apply text-base leading-spaced tracking-tighter;
+  }
+  nav {
+    @apply text-smaller leading-tightest tracking-tight;
+  }
+  canvas + div > div,
+  canvas + div > div,
+  canvas + div > div > div {
+    @apply w-full;
+  }
+}
+
+@layer components {
+  .cont {
+    @apply mx-auto w-full max-w-[1600px] px-5;
+  }
+  .cont-fluid {
+    @apply px-5;
+  }
+
+  .light-mode {
+    @apply block dark:hidden;
+  }
+  .dark-mode {
+    @apply hidden dark:block;
+  }
+
+  .p-small {
+    @apply text-smaller;
+  }
+  .small-title {
+    @apply text-xs font-light leading-tightest tracking-wide;
+  }
+
+  .transition-blur {
+    @apply transition-all duration-700 ease-in-out;
+  }
+}
