@@ -4,7 +4,11 @@ import { Homepage } from "@/types/cms";
 import { useEffect, useState } from "react";
 
 interface TimezoneProps {
-  data: Homepage["timezones"][0];
+  data: /*Homepage["hero"]["timezones"]*/ {
+    label: string;
+    codeLabel: string;
+    timezone: string;
+  };
 }
 
 export default function Timezone({ data }: TimezoneProps) {

@@ -13,7 +13,7 @@ export default function HomeShowcase({
           const { clientName, heroImage } = work as Project;
 
           return (
-            <div className="w-full flex flex-col">
+            <div key={i} className="w-full flex flex-col">
               <div
                 key={i}
                 className="w-full h-[500px] rounded-md overflow-hidden mb-4"

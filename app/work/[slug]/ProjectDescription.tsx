@@ -57,9 +57,9 @@ export default function ProjectDescription({ project }: { project: Project }) {
                 )}
                 className="grid gap-3 whitespace-pre-line"
               />
-              {project.links.length > 0 && (
+              {(project?.links ?? []).length > 0 && (
                 <div className="flex gap-6 pt-5">
-                  {project.links.map(({ label, url }) => (
+                  {(project?.links ?? []).map(({ label, url }) => (
                     <Link
                       key={url}
                       className="rounded-full border border-black py-1 px-4 text-[13px]"

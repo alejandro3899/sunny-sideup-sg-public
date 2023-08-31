@@ -3,10 +3,10 @@ import { getColl, getGlob } from "@/utils/api";
 import BaseLayout from "@/components/BaseLayout";
 import dynamic from "next/dynamic";
 
-const Homepage = dynamic(() => import("./Homepage"), {
+const Homepage: any = dynamic(() => import("./Homepage"), {
   ssr: false,
 });
-const HomeSpline = dynamic(() => import("../components/HomeSpline"), {
+const HomeSpline: any = dynamic(() => import("../components/HomeSpline"), {
   ssr: false,
 });
 

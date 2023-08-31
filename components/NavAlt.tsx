@@ -62,7 +62,7 @@ const navLinkStyles =
 
 export default function NavAlt({
   siteBranding,
-  navItems,
+  navItems = [],
   contactLink,
   contact,
   altBrandingColour,

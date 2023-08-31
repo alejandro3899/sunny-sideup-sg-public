@@ -26,7 +26,7 @@ export default async function Work() {
               <Link href={`/work/${slug(work.title)}`} className="grid gap-4">
                 <img
                   className="w-full aspect-[23/16] object-cover rounded-lg"
-                  src={(work.thumbnail as Image).imagekit.url}
+                  src={(work.thumbnail as Image)?.imagekit?.url}
                   alt={(work.thumbnail as Image).altText}
                 />
                 <div>

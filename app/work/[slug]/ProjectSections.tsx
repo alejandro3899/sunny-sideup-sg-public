@@ -31,7 +31,7 @@ export default function ProjectSections({ project }: { project: Project }) {
 
   return (
     <LazyMotion features={domAnimation}>
-      {project.sections.map((section) => {
+      {(project?.sections ?? []).map((section: any) => {
         switch (section.blockType) {
           case "textBlock":
             return (
@@ -47,12 +47,12 @@ export default function ProjectSections({ project }: { project: Project }) {
               </div>
             );
           case "imagesBlock":
-            return section.images.map((image) => {
+            return section.images.map((image: any) => {
               const assetType = (image.image as Image).mimeType?.split("/")[0];
               return assetType === "video" ? (
                 <m.video
                   key={section.id! + image.id}
-                  src={(image.image as Image).imagekit.url}
+                  src={(image.image as Image)?.imagekit?.url}
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -64,7 +64,7 @@ export default function ProjectSections({ project }: { project: Project }) {
               ) : (
                 <m.img
                   key={section.id! + image.id}
-                  src={(image.image as Image).imagekit.url}
+                  src={(image.image as Image)?.imagekit?.url}
                   alt={(image.image as Image).altText}
                   variants={sectionVariants}
                   initial="hidden"

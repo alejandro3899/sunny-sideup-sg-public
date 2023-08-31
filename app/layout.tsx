@@ -2,7 +2,6 @@ import localFont from "@next/font/local";
 import Script from "next/script";
 
 import "@/styles/globals.css";
-import Footer from "@/components/Footer";
 
 const autautGrotesk = localFont({
   src: [
@@ -40,7 +39,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     >
       <head />
       <body
-        className="flex min-h-screen flex-col"
+        className="relative flex min-h-screen flex-col"
         suppressHydrationWarning={true}
       >
         {children}

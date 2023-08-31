@@ -17,13 +17,13 @@ interface BaseLayoutProps {
   renderFooter?: boolean;
 }
 
-export default async function BaseLayout({
+const BaseLayout = async function ({
   children,
   altBrandingColour,
   fullWidth = false,
   renderNav = true,
   renderFooter = false,
-}: BaseLayoutProps): Promise<ReactElement> {
+}: BaseLayoutProps) {
   const { topNavigation, contactLink } =
     await getGlob<Navigation>("/navigation");
   const contact = await getGlob<Contact>("/contact");
@@ -46,4 +46,6 @@ export default async function BaseLayout({
       {renderFooter && <Footer {...footer} />}
     </>
   );
-}
+} as unknown as (props: BaseLayoutProps) => ReactElement;
+
+export default BaseLayout;

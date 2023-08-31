@@ -39,7 +39,7 @@ export default function HomeTestimonials({
     <section className="w-full px-5 sm:px-10 py-12 font-sans">
       <div className="w-full max-w-[1400px] mx-auto">
         <Swiper
-          modules={[Autoplay]}
+          {...({ modules: [Autoplay] } as any)}
           grabCursor={true}
           loop={true}
           speed={1000}

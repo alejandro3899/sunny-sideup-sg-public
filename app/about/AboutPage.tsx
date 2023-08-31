@@ -24,6 +24,15 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
 
   return (
     <>
+      <style>
+        {`
+          .main-nav {
+            width: 100%;
+            max-width: 100vw;
+            margin: 0;
+          }
+        `}
+      </style>
       {loaded && (
         <LazyMotion features={domAnimation}>
           <div className="cont grid gap-24 pt-[92px]">
@@ -46,7 +55,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
               </m.p>
               {hero!.heroImage && (
                 <img
-                  src={(hero!.heroImage as Image).imagekit.url}
+                  src={(hero!.heroImage as Image)?.imagekit?.url}
                   alt={(hero!.heroImage as Image).altText}
                   className="absolute bottom-0 right-20 h-[400px]"
                 />
@@ -59,7 +68,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
               animate="visible"
               className="grid gap-20"
             >
-              {intro!.sections.map((section) => (
+              {(intro?.sections ?? []).map((section) => (
                 <m.div
                   key={section.id}
                   variants={rightLeft()}
@@ -91,8 +100,8 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </Marquee>
           </m.section>
 
-          <div className="cont grid gap-24 pb-20">
-            <section>
+          <div className="w-full cont grid gap-24 pb-20 overflow-x-hidden">
+            <section className="w-full">
               <m.h2
                 className="mb-9"
                 variants={bottomIn()}
@@ -109,14 +118,14 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                {expertise!.sections.map((section) => (
+                {(expertise?.sections ?? []).map((section) => (
                   <m.div
                     key={section.id}
                     className="flex gap-4 sm:block"
                     variants={rightLeft()}
                   >
                     <img
-                      src={(section.image as Image).imagekit.url}
+                      src={(section.image as Image)?.imagekit?.url ?? ""}
                       alt={(section.image as Image).altText}
                       className="w-[40%] max-w-[200px] sm:w-auto sm:max-w-full"
                     />
@@ -148,10 +157,10 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                {team!.people.map((item) => (
+                {(team?.people ?? []).map((item) => (
                   <m.div key={item.id} variants={rightLeft()}>
                     <img
-                      src={(item.image as Image).imagekit.url}
+                      src={(item?.image as Image)?.imagekit?.url}
                       alt={(item.image as Image).altText}
                     />
                     <h4 className="mt-4 leading-[1.2]">{item.name}</h4>
@@ -172,7 +181,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                 {clients!.heading}
               </m.h2>
               <div className="grid gap-14">
-                {clients!.sections.map((section) => {
+                {(clients?.sections ?? []).map((section) => {
                   const clientList = section.clientsList.split(/\r?\n/);
                   return (
                     <m.div
@@ -228,7 +237,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
               </m.h2>
               <div className="grid gap-10 sm:grid-cols-3">
                 <m.img
-                  src={(recognition!.image as Image).imagekit.url}
+                  src={(recognition!.image as Image)?.imagekit?.url}
                   alt={(recognition!.image as Image).altText}
                   className="hidden sm:block"
                   variants={rightLeft()}
@@ -243,7 +252,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  {recognition!.awards.map((award) => (
+                  {(recognition?.awards ?? []).map((award) => (
                     <m.div key={award.id} variants={rightLeft()}>
                       <AnimatedLine />
                       <div className="grid justify-between gap-3 py-5 sm:flex sm:py-9">
@@ -261,9 +270,8 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                 <m.div
                   className="grid h-[575px] place-content-center rounded-[40px] bg-cover bg-center"
                   style={{
-                    backgroundImage: `url("${
-                      (work?.background as Image).imagekit.url
-                    }")`,
+                    backgroundImage: `url("${(work?.background as Image)
+                      ?.imagekit?.url}")`,
                   }}
                   variants={bottomIn()}
                   initial="hidden"
