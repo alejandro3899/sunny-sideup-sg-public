@@ -1,7 +1,7 @@
 "use client";
 
-import PeelButton from "@/components/PeelButton";
 import { Homepage, Image as ImageType } from "@/types/cms";
+import PeelButton from "@/components/PeelButton";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -27,7 +27,7 @@ export default function HomeHeroShowcase({
           <video controls={false} className="w-full h-full">
             <source src={url} />
             <p className="w-full flex justify-center items-center text-center text-base">
-              Your browser doesn't support HTML video. Here is a
+              Your browser doesn&apos;t support HTML video. Here is a
               <a href={url}>link to the video</a> instead.
             </p>
           </video>
@@ -45,7 +45,7 @@ export default function HomeHeroShowcase({
 
       {isVideo && (
         <PeelButton
-          className="left-4 sm:left-10"
+          className="left-4 sm:left-10 bottom-8"
           onClick={() => setPlaying((prev) => !prev)}
         >
           {isPlaying ? "PAUSE" : "PLAY"} VIDEO
