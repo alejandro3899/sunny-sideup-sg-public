@@ -14,7 +14,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
   } = hero;
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-end bg-black text-white pt-[92px] pb-8 px-4 sm:px-10">
+    <section className="relative w-full min-h-screen flex flex-col justify-end bg-black text-white pt-[92px] pb-8">
       <div className="absolute min-h-screen inset-0 w-full h-full flex items-center justify-center">
         <Image
           src={(backgroundImage as ImageType)?.imagekit?.url!}
@@ -25,7 +25,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
         />
       </div>
 
-      <div className="w-full max-w-[1400px] mx-auto flex flex-col z-[2]">
+      <div className="container flex flex-col z-[2]">
         {/* top */}
         <div className="w-full flex lg:items-end flex-col lg:flex-row gap-4 lg:gap-0 mb-14">
           <div className="flex-1 lg:flex-[0.5] lg:min-w-[524px] flex flex-col">

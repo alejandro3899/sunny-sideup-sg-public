@@ -83,7 +83,7 @@ export default function MainNav({
     <div
       className={clsx(
         "main-nav !fixed left-0 top-0 inset-x-0 z-10 mx-auto flex justify-between gap-8 py-4 sm:py-7",
-        fullWidth ? "cont-fluid max-w-full" : "cont"
+        fullWidth ? "cont-fluid max-w-full" : "container"
       )}
     >
       <Link

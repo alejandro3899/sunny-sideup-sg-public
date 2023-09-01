@@ -8,8 +8,8 @@ export default function HomeWorkProcess({
   const { heading, subHeading, workProcess: process = [] } = workProcess;
 
   return (
-    <section className="w-full min-h-screen bg-white px-4 sm:px-10 py-8 sm:py-12">
-      <div className="w-full max-w-[1400px] mx-auto">
+    <section className="w-full min-h-screen bg-white py-8 sm:py-12">
+      <div className="container">
         <div className="w-full justify-between flex flex-col lg:flex-row gap-16">
           {/* left */}
           <div className="w-full flex flex-col text-black">

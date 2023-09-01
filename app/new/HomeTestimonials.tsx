@@ -36,16 +36,17 @@ export default function HomeTestimonials({
   }
 
   return (
-    <section className="w-full bg-white px-4 sm:px-10 py-8 sm:py-12 font-sans">
-      <div className="w-full max-w-[1400px] mx-auto">
+    <section className="w-full bg-white py-8 sm:py-12 font-sans">
+      <div className="container">
         <Swiper
           {...({ modules: [Autoplay] } as any)}
-          grabCursor={true}
-          loop={true}
-          speed={1000}
           autoplay={{
             delay: 6000,
           }}
+          effect="fade"
+          grabCursor={true}
+          loop={true}
+          speed={1000}
           slidesPerGroup={1}
           slidesPerView={1}
           spaceBetween={12}
@@ -77,7 +78,7 @@ export default function HomeTestimonials({
                         return (
                           <div
                             key={i}
-                            className="w-12 h-12 rounded-full cursor-pointer bg-cover bg-center border border-black/50 hover:border-black transition-all"
+                            className="w-12 h-12 rounded-full cursor-pointer bg-cover bg-center border border-noir/60 hover:border-noir transition-all"
                             style={{
                               backgroundImage: `url("${(t.clientImage as Image)
                                 ?.imagekit?.url}")`,

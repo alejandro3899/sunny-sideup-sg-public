@@ -58,7 +58,7 @@ export default function HomePage({
         contactLink={contactLink}
         contact={contact}
         altBrandingColour={isWhite}
-        fullWidth={true}
+        fullWidth={false}
       />
 
       <div className="w-full flex flex-col items-center">
