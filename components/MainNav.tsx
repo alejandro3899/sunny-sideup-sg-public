@@ -4,8 +4,9 @@ import { Contact, Navigation, Setting } from "@/types/cms";
 import slateToHtml from "@/utils/slateToHtml";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { TweenLite } from "gsap";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface MainNavProps {
   siteBranding: Setting["siteBranding"];
@@ -78,6 +79,44 @@ export default function MainNav({
   fullWidth = false,
 }: MainNavProps) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    let curs: HTMLDivElement = document.querySelector(".cursor")!;
+    let initCursor = false;
+
+    function handleMove(e: MouseEvent) {
+      var mouseX = e.clientX;
+      var mouseY = e.clientY;
+
+      if (!initCursor) {
+        // cursor.style.opacity = 1;
+        (window as any)?.TweenLite?.to(curs, 0.3, {
+          opacity: 1,
+        });
+        initCursor = true;
+      }
+
+      (window as any)?.TweenLite?.to(curs, 0.2, {
+        top: mouseY + "px",
+        left: mouseX + "px",
+      });
+    }
+
+    function handleMouseOut() {
+      (window as any)?.TweenLite?.to(curs, 0.3, {
+        opacity: 0,
+      });
+      initCursor = false;
+    }
+
+    document.addEventListener("mousemove", handleMove);
+    document.addEventListener("mouseout", handleMouseOut);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, []);
 
   return (
     <div

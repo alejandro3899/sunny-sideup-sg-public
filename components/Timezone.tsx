@@ -9,7 +9,7 @@ interface TimezoneProps {
 
 export default function Timezone({ data }: TimezoneProps) {
   const { label, codeLabel, timezone } = data;
-  const [currentDate, setCurrentDate] = useState<Date>();
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
   useEffect(() => {
     setCurrentDate(new Date());

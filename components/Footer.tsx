@@ -10,7 +10,6 @@ export default function Footer({
 }: Footer) {
   return (
     <footer
-      data-id="footer"
       data-theme="dark"
       className="w-full bg-black flex items-center justify-center pt-16 pb-24"
     >

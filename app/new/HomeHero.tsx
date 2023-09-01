@@ -56,7 +56,16 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
                   <PeelButton className="text-xs">{label}</PeelButton>
                 </Link>
               ))}
-              <PeelButton className="text-xs">VIEW WORK</PeelButton>
+              <PeelButton
+                className="text-xs"
+                onClick={() => {
+                  document
+                    .querySelector(".work-showcase")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                VIEW WORK
+              </PeelButton>
             </div>
           </div>
         </div>

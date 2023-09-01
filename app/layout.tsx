@@ -43,6 +43,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         suppressHydrationWarning={true}
       >
         {children}
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7Y3MGNLB4C"
           strategy="afterInteractive"
