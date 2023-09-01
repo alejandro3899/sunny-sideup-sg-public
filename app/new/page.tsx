@@ -1,6 +1,6 @@
-import HomePage from "./HomePage";
-import { getGlob } from "@/utils/api";
 import { Contact, Homepage, Navigation, Setting } from "@/types/cms";
+import { getGlob } from "@/utils/api";
+import HomePage from "./HomePage";
 
 export default async function App() {
   const home = await getGlob<Homepage>("/homepage", { depth: 3 });

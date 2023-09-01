@@ -6,11 +6,11 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-black flex-1 flex flex-col">
+    <div className="bg-white flex-1 flex flex-col">
       <BaseLayout
-        renderNav={false}
         altBrandingColour={true}
-        renderFooter={false}
+        renderFooter={true}
+        renderNav={false}
       >
         {children}
       </BaseLayout>

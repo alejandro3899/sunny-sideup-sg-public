@@ -2,15 +2,15 @@ import ImageKit from "@/components/ImageKit";
 import { Homepage, Image } from "@/types/cms";
 
 export default function HomeWorkSpotlight({
-  work,
+  workSpotlight,
 }: {
-  work: Homepage["workSpotlight"]["workSpotlight"];
+  workSpotlight: Homepage["workSpotlight"];
 }) {
-  const { title, image, completionTime, process } = work;
+  const { title, image, completionTime, process } = workSpotlight.workSpotlight;
 
   return (
-    <section className="w-full mb-36">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans">
+    <section className="w-full bg-white mb-0 sm:mb-20 px-4 sm:px-10 py-8 sm:py-12">
+      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans">
         {/* left */}
         <div className="flex flex-col h-full justify-between lg:min-h-[480px] gap-8 lg:gap-12">
           <h2
@@ -48,7 +48,7 @@ export default function HomeWorkSpotlight({
             alt={(image as Image).altText ?? title}
             width={600}
             height={600}
-            className="w-full h-auto max-w-[480px] mx-auto"
+            className="w-full h-auto max-w-[480px] mx-auto rounded-md"
           />
         </div>
       </div>

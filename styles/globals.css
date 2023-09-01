@@ -76,3 +76,8 @@ body {
     @apply transition-all duration-700 ease-in-out;
   }
 }
+
+/* Swiper */
+.swiper-wrapper {
+  align-items: stretch;
+}

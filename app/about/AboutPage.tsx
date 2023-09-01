@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatedLine } from "@/components/AnimatedLine";
 import { About as AboutTypes, Image } from "@/types/cms";
 import slateToHtml from "@/utils/slateToHtml";
 import { bottomIn, rightLeft, rightLeftContainer } from "@/utils/variants";
+import { AnimatedLine } from "@/components/AnimatedLine";
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";

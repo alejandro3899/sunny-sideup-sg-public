@@ -1,116 +1,62 @@
-"use client";
+import { Homepage, Image as ImageType } from "@/types/cms";
+import PeelButton from "@/components/PeelButton";
+import Timezone from "@/components/Timezone";
+import Image from "next/image";
+import Link from "next/link";
 
-import useWindowDimensions from "@/hooks/useWindowDimensions";
-import { formatUnit } from "@/utils";
-import { Image, Text } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
-
-const semiBoldFont = "./AutautGrotesk-Semibold.otf";
-const mediumMonumentGroteskFont = "./MonumentGrotesk-Medium.ttf";
-const mediumAutautGroteskFont = "./AutautGrotesk-Medium.otf";
-
-export default function HomeHero() {
-  const state = useThree();
-  const { width: canvasWidth, height: canvasHeight } =
-    state.viewport.getCurrentViewport(state.camera, [0, 0, 1]);
-  const { width, height } = useWindowDimensions();
-
-  const formatUnitX = formatUnit(width, canvasWidth);
-  const formatUnitY = formatUnit(height, canvasHeight);
-  const screenSm = formatUnitX(640);
-  const screenMd = formatUnitX(768);
-  const screenLg = formatUnitX(1024);
-  const timePosY = -canvasHeight / 2 + formatUnitY(24);
-  const bookingsPosY =
-    canvasWidth >= screenSm
-      ? canvasWidth >= screenLg
-        ? -canvasHeight / 4
-        : -canvasHeight / 2 + formatUnitY(24)
-      : -canvasHeight / 2 - formatUnitY(72);
-  const bookingsPosX =
-    canvasWidth >= screenSm
-      ? canvasWidth >= screenLg
-        ? formatUnitX(150)
-        : formatUnitX(-75)
-      : -canvasWidth / 2 + formatUnitX(20);
+export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
+  const {
+    mainHeading,
+    subHeading,
+    backgroundImage,
+    timezones = [],
+    heroLinks = [],
+  } = hero;
 
   return (
-    <>
-      <Image
-        position={[0, 0, 1]}
-        scale={canvasWidth >= screenSm ? [6, 6.007] : [4, 4.007]}
-        url="/visax.png"
-      />
-      {/* hero text */}
-      <Text
-        anchorX="left"
-        anchorY="bottom"
-        position={[-canvasWidth / 2 + formatUnitX(20), -canvasHeight / 3, 1]}
-        scale={[0.5, 0.5, 1]}
-        color="#ffffff"
-        font={semiBoldFont}
-        fontSize={canvasWidth >= screenSm ? 0.875 : 0.5}
-        lineHeight={1}
-      >
-        {
-          "300m startups\nare created every year.\nWe help your brand\nstand out."
-        }
-      </Text>
+    <section className="relative w-full min-h-screen flex flex-col justify-end bg-black text-white pt-[92px] pb-8 px-4 sm:px-10">
+      <div className="absolute min-h-screen inset-0 w-full h-full flex items-center justify-center">
+        <Image
+          src={(backgroundImage as ImageType)?.imagekit?.url!}
+          alt={(backgroundImage as ImageType)?.altText ?? "Hero"}
+          width={819}
+          height={825}
+          className="h-auto w-[90%] sm:w-3/4 max-w-[800px] mx-auto z-[1]"
+        />
+      </div>
 
-      {/* time */}
-      {/* 1 */}
-      <Text
-        anchorX="left"
-        anchorY="bottom"
-        position={[-canvasWidth / 2 + formatUnitX(20), timePosY, 1]}
-        scale={[0.5, 0.5, 1]}
-        font={mediumMonumentGroteskFont}
-        fontSize={0.16}
-        lineHeight={1}
-        color="#ffffff"
-      >
-        {"SIN\n\nLAX\n\nMETA"}
-      </Text>
-      {/* 2 */}
-      <Text
-        anchorX="left"
-        anchorY="bottom"
-        position={[-canvasWidth / 2 + formatUnitX(75), timePosY, 1]}
-        scale={[0.5, 0.5, 1]}
-        font={mediumMonumentGroteskFont}
-        fontSize={0.16}
-        lineHeight={1}
-        color="#ffffff"
-      >
-        {"01:28:23\n\n9:27:23\n\n11:28:23"}
-      </Text>
-      {/* 3 */}
-      <Text
-        anchorX="left"
-        anchorY="bottom"
-        position={[-canvasWidth / 2 + formatUnitX(155), timePosY, 1]}
-        scale={[0.5, 0.5, 1]}
-        font={mediumMonumentGroteskFont}
-        fontSize={0.16}
-        lineHeight={1}
-        color="#ffffff"
-      >
-        {`GMT +8\n\nPST\n\nUTC -6`}
-      </Text>
+      <div className="w-full max-w-[1400px] mx-auto flex flex-col z-[2]">
+        {/* top */}
+        <div className="w-full flex lg:items-end flex-col lg:flex-row gap-4 lg:gap-0 mb-14">
+          <div className="flex-1 lg:flex-[0.5] lg:min-w-[524px] flex flex-col">
+            <h1 className="max-w-[524px] text-4xl sm:text-[54px] leading-none font-bold text-white">
+              {mainHeading}
+            </h1>
+          </div>
+          <div className="flex-1 lg:flex-[0.5] lg:pl-8">
+            <h2 className="max-w-[360px] text-[21px] font-medium text-white">
+              {subHeading}
+            </h2>
+          </div>
+        </div>
 
-      {/* others */}
-      <Text
-        anchorX="left"
-        anchorY="bottom"
-        position={[bookingsPosX, bookingsPosY, 1]}
-        scale={[0.5, 0.5, 1]}
-        font={mediumAutautGroteskFont}
-        fontSize={0.35}
-        lineHeight={1.2}
-        color="#ffffff"
-      >
-        {"Sunny Side Up is a brand\nagency based in Singapore"}
-      </Text>
-    </>
+        {/* bottom */}
+        <div className="w-full flex flex-col sm:flex-row sm:items-end justify-between md:justify-start gap-6 sm:gap-0">
+          <div className="lg:min-w-[524px] grid gap-3 md:flex-[0.5] text-white">
+            {timezones.map((item) => (
+              <Timezone key={item.id} data={item} />
+            ))}
+          </div>
+          <div className="flex flex-wrap md:flex-[0.5] gap-4 sm:gap-6 items-center sm:pl-8">
+            {heroLinks?.map(({ url, label, newTab }, i) => (
+              <Link key={i} target={newTab ? "_blank" : "_self"} href={url}>
+                <PeelButton className="text-xs">{label}</PeelButton>
+              </Link>
+            ))}
+            <PeelButton className="text-xs">VIEW WORK</PeelButton>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

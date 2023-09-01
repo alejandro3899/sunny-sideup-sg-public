@@ -42,7 +42,7 @@ const BaseLayout = async function ({
           fullWidth={fullWidth}
         />
       )}
-      <main className="flex-1">{children}</main>
+      <main className="relative flex-1">{children}</main>
       {renderFooter && <Footer {...footer} />}
     </>
   );

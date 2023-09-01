@@ -1,7 +1,7 @@
 import { Footer, Image } from "@/types/cms";
+import ImageKit from "./ImageKit";
 import clsx from "clsx";
 import Link from "next/link";
-import ImageKit from "./ImageKit";
 
 export default function Footer({
   bottomTitle,
@@ -9,8 +9,8 @@ export default function Footer({
   socialMediaLinks,
 }: Footer) {
   return (
-    <footer className="bg-black w-full pt-16 pb-24 mt-32 flex items-center justify-center">
-      <div className="container w-full">
+    <footer className="bg-black w-full px-4 sm:px-10 pt-16 pb-24 mt-28 sm:mt-32 flex items-center justify-center">
+      <div className="max-w-[1400px] mx-auto w-full">
         {/* top */}
         <div className="flex flex-col font-sans text-white mb-16">
           <div className="flex flex-col items-center text-center">
@@ -24,14 +24,16 @@ export default function Footer({
               className="object-fit"
             />
           </div>
-          <button
-            className={clsx(
-              "w-full rounded-full text-lg font-medium py-6 border-2 border-white/80",
-              "hover:border-white transition-all"
-            )}
-          >
-            {contact.contactButtonText}
-          </button>
+          <Link href="/">
+            <button
+              className={clsx(
+                "w-full rounded-full text-lg font-medium py-6 border-2 border-white/90",
+                "hover:border-white transition-all"
+              )}
+            >
+              {contact.contactButtonText}
+            </button>
+          </Link>
         </div>
 
         {/* bottom */}
@@ -45,7 +47,7 @@ export default function Footer({
                       href={url}
                       target={newTab ? "_blank" : "_self"}
                       className={clsx(
-                        "text-lg text-white/80",
+                        "text-lg text-white/90",
                         "hover:text-white transition-all"
                       )}
                     >

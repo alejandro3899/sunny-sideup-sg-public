@@ -36,7 +36,7 @@ export default function HomeTestimonials({
   }
 
   return (
-    <section className="w-full px-5 sm:px-10 py-12 font-sans">
+    <section className="w-full bg-white px-4 sm:px-10 py-8 sm:py-12 font-sans">
       <div className="w-full max-w-[1400px] mx-auto">
         <Swiper
           {...({ modules: [Autoplay] } as any)}
@@ -61,15 +61,15 @@ export default function HomeTestimonials({
         >
           {(testimonials?.testimonials ?? []).map((t, i) => {
             return (
-              <SwiperSlide key={i} className="w-full">
-                <div className="w-full flex flex-col xl:flex-row xl:justify-between items-stretch bg-grey-def rounded-md px-6 sm:px-12">
+              <SwiperSlide key={i} className="w-full !h-auto">
+                <div className="w-full h-full flex flex-col xl:flex-row xl:justify-between items-stretch bg-grey-def rounded-md px-6 sm:px-12">
                   {/* left */}
-                  <div className="w-full xl:w-1/3 max-w-3xl flex flex-col justify-between py-12 gap-16">
+                  <div className="w-full h-full xl:w-1/3 max-w-3xl flex flex-col justify-between py-12 gap-16">
                     <div>
-                      <p className="mb-6 text-3xl sm:text-5xl md:min-w-[600px]">
+                      <p className="mb-6 text-3xl sm:text-5xl text-noir font-medium md:min-w-[600px]">
                         “{t.clientTestimonial}”
                       </p>
-                      <p className="text-base font-medium">{`${t.clientName}, ${t.clientRole}`}</p>
+                      <p className="text-base text-noir font-medium">{`${t.clientName}, ${t.clientRole}`}</p>
                     </div>
 
                     <div className="flex items-center gap-4 flex-wrap">

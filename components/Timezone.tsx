@@ -4,11 +4,7 @@ import { Homepage } from "@/types/cms";
 import { useEffect, useState } from "react";
 
 interface TimezoneProps {
-  data: /*Homepage["hero"]["timezones"]*/ {
-    label: string;
-    codeLabel: string;
-    timezone: string;
-  };
+  data: NonNullable<Homepage["hero"]["timezones"]>[0];
 }
 
 export default function Timezone({ data }: TimezoneProps) {
@@ -24,8 +20,8 @@ export default function Timezone({ data }: TimezoneProps) {
   }, []);
 
   return (
-    <div className="flex gap-3 text-[10px] font-medium leading-none">
-      <div className="min-w-[72px]">{label}</div>
+    <div className="flex gap-4 text-[10px] font-medium leading-none">
+      <div className="min-w-[30px]">{label}</div>
       <div className="min-w-[44px]">
         {currentDate &&
           currentDate.toLocaleTimeString("en-GB", {

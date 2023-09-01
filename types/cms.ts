@@ -109,14 +109,25 @@ export interface Homepage {
   hero: {
     mainHeading: string;
     subHeading: string;
+    backgroundImage?: string | Image;
+    showcase?: string | Image;
     timezones?: {
       label: string;
       codeLabel: string;
       timezone: string;
       id?: string;
     }[];
+    heroLinks?: {
+      label: string;
+      url: string;
+      newTab?: boolean;
+      hide?: boolean;
+      id?: string;
+    }[];
   };
   workShowcase: {
+    heading: string;
+    subHeading: string;
     workShowcase: {
       work?: string | Project;
       tag?: string;

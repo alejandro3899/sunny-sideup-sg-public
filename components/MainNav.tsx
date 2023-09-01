@@ -94,7 +94,7 @@ export default function MainNav({
       >
         {siteBranding}
       </Link>
-      <nav className="flex gap-2">
+      <nav className="flex gap-3">
         {(navItems ?? []).map((item) => (
           <Link
             key={item.id}
@@ -117,7 +117,7 @@ export default function MainNav({
         </Link> */}
         {!contactLink.hide && (
           <div
-            className={clsx("cursor-pointer", navLinkStyles, {
+            className={clsx("cursor-pointer aspect-square", navLinkStyles, {
               "!bg-transparent text-white !border-none shadow-[0_0_0_1px_white] hover:shadow-[0_0_0_1px_#9ca3af] transition-all":
                 altBrandingColour,
             })}
@@ -125,7 +125,19 @@ export default function MainNav({
               modalOpen ? setModalOpen(false) : setModalOpen(true)
             }
           >
-            {contactLink.label}
+            {/* {contactLink.label} */}
+            <svg
+              width="2"
+              height="10"
+              viewBox="0 0 2 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.213375 0.199999H1.78138V1.712H0.213375V0.199999ZM0.269375 3H1.72538V10H0.269375V3Z"
+                fill="currentColor"
+              />
+            </svg>
           </div>
         )}
       </nav>
