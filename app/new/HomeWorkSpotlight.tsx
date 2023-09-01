@@ -11,7 +11,7 @@ export default function HomeWorkSpotlight({
   return (
     <section
       data-theme="light"
-      className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12"
+      className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12 overflow-hidden"
     >
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans">
         {/* left */}

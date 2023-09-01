@@ -10,7 +10,7 @@ export default function HomeWorkProcess({
   return (
     <section
       data-theme="light"
-      className="w-full min-h-screen bg-white py-8 sm:py-12 pb-28 sm:pb-32"
+      className="w-full min-h-screen bg-white py-8 sm:py-12 pb-28 sm:pb-32 overflow-hidden"
     >
       <div className="container">
         <div className="w-full justify-between flex flex-col lg:flex-row gap-16">

@@ -12,7 +12,7 @@ export default function HomeShowcase({
   return (
     <section
       data-theme="light"
-      className="work-showcase w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12"
+      className="work-showcase w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12 overflow-hidden"
     >
       <div className="container">
         <div className="max-w-[594px] mr-auto w-full flex flex-col mb-14 sm:mb-20">

@@ -4,7 +4,6 @@ import { Contact, Navigation, Setting } from "@/types/cms";
 import slateToHtml from "@/utils/slateToHtml";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { TweenLite } from "gsap";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -89,14 +88,13 @@ export default function MainNav({
       var mouseY = e.clientY;
 
       if (!initCursor) {
-        // cursor.style.opacity = 1;
         (window as any)?.TweenLite?.to(curs, 0.3, {
           opacity: 1,
         });
         initCursor = true;
       }
 
-      (window as any)?.TweenLite?.to(curs, 0.2, {
+      (window as any)?.TweenLite?.to(curs, 0.3, {
         top: mouseY + "px",
         left: mouseX + "px",
       });

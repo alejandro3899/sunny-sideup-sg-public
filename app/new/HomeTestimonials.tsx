@@ -39,7 +39,7 @@ export default function HomeTestimonials({
   return (
     <section
       data-theme="light"
-      className="w-full bg-white py-8 sm:py-12 font-sans"
+      className="w-full bg-white py-8 sm:py-12 font-sans overflow-hidden"
     >
       <div className="container">
         <Swiper
