@@ -42,7 +42,9 @@ const BaseLayout = async function ({
           fullWidth={fullWidth}
         />
       )}
-      <main className="relative flex-1">{children}</main>
+      <main className="relative flex-1" data-scroller>
+        {children}
+      </main>
       {renderFooter && <Footer {...footer} />}
     </>
   );

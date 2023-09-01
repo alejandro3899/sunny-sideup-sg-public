@@ -2,7 +2,6 @@
 
 import { Contact, Homepage, Navigation, Setting } from "@/types/cms";
 import HomeHero from "./HomeHero";
-import HomeHeroShowcase from "./HomeHeroShowcase";
 import HomeShowcase from "./HomeWorkShowcase";
 import HomeWorkSpotlight from "./HomeWorkSpotlight";
 import HomeTestimonials from "./HomeTestimonials";
@@ -30,18 +29,71 @@ export default function HomePage({
   const { hero, testimonials, workProcess, workShowcase, workSpotlight } = home;
 
   useEffect(() => {
-    const target = document.querySelector("#intersect");
-    const options = {
-      //   root: document.querySelector(".scroll-area"),
-      threshold: 1.0,
-      rootMargin: "0px 0px 0px 0px",
+    const sections = [
+      ...Array.from(document.querySelectorAll("[data-scroller] > section")),
+      document.querySelector("footer")!,
+    ];
+    let direction = "up";
+    let prevYPosition = 0;
+
+    const setScrollDirection = () => {
+      if (window.scrollY > prevYPosition) {
+        direction = "down";
+      } else {
+        direction = "up";
+      }
+
+      prevYPosition = window.scrollY;
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      console.log("entries: ", entries);
-    }, options);
+    const getTargetSection = (target: Element) => {
+      if (direction === "up") return target;
 
-    observer.observe(target!);
+      const next =
+        target.nextElementSibling ?? document.querySelector("footer");
+      if (next) {
+        return next;
+      } else {
+        return target;
+      }
+    };
+
+    const shouldUpdate = (entry: IntersectionObserverEntry) => {
+      if (direction === "down" && !entry.isIntersecting) {
+        return true;
+      }
+
+      if (direction === "up" && entry.isIntersecting) {
+        return true;
+      }
+
+      return false;
+    };
+
+    const updateColors = (target: any) => {
+      const theme = (target as any)?.dataset?.theme ?? "light";
+      setIsWhite(theme !== "light");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setScrollDirection();
+
+          if (!shouldUpdate(entry)) return;
+
+          const target = getTargetSection(entry.target);
+          updateColors(target);
+        });
+      },
+      {
+        rootMargin: `-${92 / 2}px`,
+        threshold: 0,
+      }
+    );
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
       observer.disconnect();
@@ -61,16 +113,11 @@ export default function HomePage({
         fullWidth={false}
       />
 
-      <div className="w-full flex flex-col items-center">
-        <HomeHero hero={hero} />
-        {hero.showcase && <HomeHeroShowcase showcase={hero.showcase} />}
-        <div id="intersect" className="w-full">
-          <HomeShowcase workShowcase={workShowcase} />
-        </div>
-        <HomeWorkSpotlight workSpotlight={workSpotlight} />
-        <HomeTestimonials testimonials={testimonials} />
-        <HomeWorkProcess workProcess={workProcess} />
-      </div>
+      <HomeHero hero={hero} />
+      <HomeShowcase workShowcase={workShowcase} />
+      <HomeWorkSpotlight workSpotlight={workSpotlight} />
+      <HomeTestimonials testimonials={testimonials} />
+      <HomeWorkProcess workProcess={workProcess} />
     </>
   );
 }

@@ -11,12 +11,6 @@ export default async function App() {
 
   return (
     <>
-      <style>
-        {`
-        body {overscroll-behavior: none;cursor: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==),auto;}
-        `}
-      </style>
-
       <HomePage
         home={home}
         siteBranding={siteBranding}

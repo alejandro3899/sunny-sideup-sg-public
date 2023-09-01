@@ -10,7 +10,10 @@ export default function HomeShowcase({
   const { heading, subHeading, workShowcase: works } = workShowcase;
 
   return (
-    <section className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12">
+    <section
+      data-theme="light"
+      className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12"
+    >
       <div className="container">
         <div className="max-w-[594px] mr-auto w-full flex flex-col mb-14 sm:mb-20">
           <h2 className="font-gaisyr text-[13px] text-black tracking-[0.13px] mb-4 sm:mb-6">
@@ -40,9 +43,11 @@ export default function HomeShowcase({
                 </div>
                 <div className="flex items-center">
                   <h3 className="text-3xl text-noir font-sans font-medium mr-4">
-                    <Link href={`/work/${slug}`}>{clientName}</Link>
+                    <Link target="_blank" href={`/work/${slug}`}>
+                      {clientName}
+                    </Link>
                   </h3>
-                  {tag?.length && (
+                  {tag && (
                     <div className="text-sm uppercase font-sans border border-noir px-3 py-2 rounded-full">
                       <span>{tag}</span>
                     </div>

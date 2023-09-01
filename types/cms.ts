@@ -149,7 +149,10 @@ export interface Homepage {
     testimonials?: {
       clientName: string;
       clientRole: string;
-      clientImage: string | Image;
+      clientImage: {
+        image: string | Image;
+        imagePosition?: 'center' | 'bottom';
+      };
       clientTestimonial: string;
       id?: string;
     }[];

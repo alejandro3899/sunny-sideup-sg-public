@@ -9,6 +9,7 @@ import SwiperType from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { useRef, useState } from "react";
+import clsx from "clsx";
 
 export default function HomeTestimonials({
   testimonials,
@@ -36,7 +37,10 @@ export default function HomeTestimonials({
   }
 
   return (
-    <section className="w-full bg-white py-8 sm:py-12 font-sans">
+    <section
+      data-theme="light"
+      className="w-full bg-white py-8 sm:py-12 font-sans"
+    >
       <div className="container">
         <Swiper
           {...({ modules: [Autoplay] } as any)}
@@ -61,6 +65,8 @@ export default function HomeTestimonials({
           className="w-full"
         >
           {(testimonials?.testimonials ?? []).map((t, i) => {
+            const { image, imagePosition } = t.clientImage;
+
             return (
               <SwiperSlide key={i} className="w-full !h-auto">
                 <div className="w-full h-full flex flex-col xl:flex-row xl:justify-between items-stretch bg-grey-def rounded-md px-6 sm:px-12">
@@ -80,7 +86,7 @@ export default function HomeTestimonials({
                             key={i}
                             className="w-12 h-12 rounded-full cursor-pointer bg-cover bg-center border border-noir/60 hover:border-noir transition-all"
                             style={{
-                              backgroundImage: `url("${(t.clientImage as Image)
+                              backgroundImage: `url("${(image as Image)
                                 ?.imagekit?.url}")`,
                             }}
                             onClick={() => handleSlide(i)}
@@ -91,17 +97,21 @@ export default function HomeTestimonials({
                   </div>
 
                   {/* right */}
-                  <div className="w-full sm:w-3/4 xl:w-2/3 hidden xl:flex items-end">
+                  <div
+                    className={clsx(
+                      "w-full sm:w-3/4 xl:w-2/3 hidden xl:flex",
+                      imagePosition === "bottom" ? "items-end" : "items-center"
+                    )}
+                  >
                     <ImageKit
-                      image={t.clientImage as Image}
+                      image={image as Image}
                       alt={
-                        (t.clientImage as Image)?.altText ??
-                        t?.clientName ??
-                        "Client"
+                        (image as Image)?.altText ?? t?.clientName ?? "Client"
                       }
-                      height={500}
-                      width={500}
-                      className="h-auto w-full"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="h-auto w-full object-fit"
                     />
                   </div>
                 </div>

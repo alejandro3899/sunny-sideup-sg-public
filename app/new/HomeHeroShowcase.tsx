@@ -21,7 +21,7 @@ export default function HomeHeroShowcase({
   }, [isPlaying]);
 
   return (
-    <section className="relative w-full flex justify-center items-center">
+    <div className="relative w-full flex justify-center items-center">
       <div className="w-full h-screen min-h-[500px]">
         {isVideo ? (
           <video controls={false} className="w-full h-full">
@@ -51,6 +51,6 @@ export default function HomeHeroShowcase({
           {isPlaying ? "PAUSE" : "PLAY"} VIDEO
         </PeelButton>
       )}
-    </section>
+    </div>
   );
 }

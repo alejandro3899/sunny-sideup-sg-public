@@ -9,7 +9,10 @@ export default function HomeWorkSpotlight({
   const { title, image, completionTime, process } = workSpotlight.workSpotlight;
 
   return (
-    <section className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12">
+    <section
+      data-theme="light"
+      className="w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12"
+    >
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans">
         {/* left */}
         <div className="flex flex-col h-full justify-between lg:min-h-[480px] gap-8 lg:gap-12">

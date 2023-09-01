@@ -9,7 +9,11 @@ export default function Footer({
   socialMediaLinks,
 }: Footer) {
   return (
-    <footer className="w-full bg-black mt-28 sm:mt-32 flex items-center justify-center pt-16 pb-24">
+    <footer
+      data-id="footer"
+      data-theme="dark"
+      className="w-full bg-black flex items-center justify-center pt-16 pb-24"
+    >
       <div className="container">
         {/* top */}
         <div className="flex flex-col font-sans text-white mb-16">
