@@ -114,9 +114,9 @@ export default function HomePage({
       />
 
       <HomeHero hero={hero} />
-      <HomeShowcase workShowcase={workShowcase} />
-      <HomeWorkSpotlight workSpotlight={workSpotlight} />
-      <HomeTestimonials testimonials={testimonials} />
+      {/* <HomeShowcase workShowcase={workShowcase} /> */}
+      {/* <HomeWorkSpotlight workSpotlight={workSpotlight} /> */}
+      {/* <HomeTestimonials testimonials={testimonials} /> */}
       <HomeWorkProcess workProcess={workProcess} />
     </>
   );

@@ -21,7 +21,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       className="w-full bg-black text-white overflow-hidden"
     >
       <div className="relative w-full min-h-screen flex flex-col justify-end pb-8 pt-[92px]">
-        <div className="absolute min-h-screen inset-0 w-full h-full flex items-center justify-center">
+        <div className="absolute min-h-screen inset-0 w-full h-full flex items-center justify-center pointer-events-none">
           <Image
             src={(backgroundImage as ImageType)?.imagekit?.url!}
             alt={(backgroundImage as ImageType)?.altText ?? "Hero"}

@@ -32,7 +32,7 @@ const BaseLayout = async function ({
 
   return (
     <>
-      <div className="cursor" />
+      <div className="cursor hidden md:block" />
       {renderNav && (
         <MainNav
           siteBranding={siteBranding}
