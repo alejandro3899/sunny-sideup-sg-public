@@ -61,7 +61,7 @@ export default function Footer({
               );
             })}
           </ul>
-          <h3 className="w-full text-center text-[52px] sm:text-9xl lg:text-[160px]">
+          <h3 className="w-full text-center text-[54px] sm:text-9xl lg:text-[160px]">
             {bottomTitle}
           </h3>
         </div>

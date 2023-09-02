@@ -73,7 +73,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
           </div>
         </div>
       </div>
-      {showcase && <HomeHeroShowcase showcase={showcase} />}
+      {/* {showcase && <HomeHeroShowcase showcase={showcase} />} */}
     </section>
   );
 }

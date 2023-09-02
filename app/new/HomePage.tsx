@@ -117,7 +117,7 @@ export default function HomePage({
       {/* <HomeShowcase workShowcase={workShowcase} /> */}
       {/* <HomeWorkSpotlight workSpotlight={workSpotlight} /> */}
       {/* <HomeTestimonials testimonials={testimonials} /> */}
-      <HomeWorkProcess workProcess={workProcess} />
+      {/* <HomeWorkProcess workProcess={workProcess} /> */}
     </>
   );
 }
