@@ -1,6 +1,12 @@
 "use client";
 
-import { Contact, Homepage, Navigation, Setting } from "@/types/cms";
+import {
+  Contact,
+  Footer as FooterType,
+  Homepage,
+  Navigation,
+  Setting,
+} from "@/types/cms";
 import HomeHero from "./HomeHero";
 import HomeShowcase from "./HomeWorkShowcase";
 import HomeWorkSpotlight from "./HomeWorkSpotlight";
@@ -8,6 +14,8 @@ import HomeTestimonials from "./HomeTestimonials";
 import HomeWorkProcess from "./HomeWorkProcess";
 import { useEffect, useState } from "react";
 import MainNav from "@/components/MainNav";
+import Footer from "@/components/Footer";
+import Smooth from "./Smooth";
 
 type Props = {
   home: Homepage;
@@ -15,6 +23,7 @@ type Props = {
   navItems: Navigation["topNavigation"];
   contactLink: Navigation["contactLink"];
   contact: Contact;
+  footer: FooterType;
 };
 
 export default function HomePage({
@@ -23,6 +32,7 @@ export default function HomePage({
   navItems,
   contactLink,
   contact,
+  footer,
 }: Props) {
   const [isWhite, setIsWhite] = useState(true);
 
@@ -100,8 +110,6 @@ export default function HomePage({
     };
   }, []);
 
-  console.log();
-
   return (
     <>
       <MainNav
@@ -112,11 +120,14 @@ export default function HomePage({
         altBrandingColour={isWhite}
         fullWidth={false}
       />
-      <HomeHero hero={hero} />
-      <HomeShowcase workShowcase={workShowcase} />
-      <HomeWorkSpotlight workSpotlight={workSpotlight} />
-      <HomeTestimonials testimonials={testimonials} />
-      <HomeWorkProcess workProcess={workProcess} />
+      <Smooth data-scroller className="w-full">
+        <HomeHero hero={hero} />
+        <HomeShowcase workShowcase={workShowcase} />
+        <HomeWorkSpotlight workSpotlight={workSpotlight} />
+        <HomeTestimonials testimonials={testimonials} />
+        <HomeWorkProcess workProcess={workProcess} />
+        <Footer {...footer} />
+      </Smooth>
     </>
   );
 }

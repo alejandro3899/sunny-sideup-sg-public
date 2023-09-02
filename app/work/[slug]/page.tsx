@@ -31,7 +31,7 @@ export default async function WorkDetails({ params }: WorkDetailsProps) {
             ?.url}')`,
         }}
       />
-      <div className="cont grid gap-14 pt-8 pb-20 md:gap-20">
+      <div className="bg-white cont grid gap-14 pt-8 pb-20 md:gap-20">
         <ProjectDescription project={project} />
         <ProjectSections project={project} />
       </div>

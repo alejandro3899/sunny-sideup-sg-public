@@ -11,7 +11,7 @@ export default async function Work() {
   return (
     <>
       <div
-        className="bg-cover bg-center h-[377px] grid place-content-center text-center"
+        className="bg-white bg-cover bg-center h-[377px] grid place-content-center text-center"
         style={{
           backgroundImage: `linear-gradient(180deg, ${backgroundGradient} 0%, rgba(0, 0, 0, 0) 37.5%)`,
         }}

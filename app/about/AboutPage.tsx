@@ -26,6 +26,9 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
     <>
       <style>
         {`
+          body {
+            background-color: white;
+          }
           .main-nav {
             width: 100%;
             max-width: 100vw;
@@ -35,7 +38,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
       </style>
       {loaded && (
         <LazyMotion features={domAnimation}>
-          <div className="cont grid gap-24 pt-[92px]">
+          <div className="bg-white cont grid gap-24 pt-[92px]">
             <section className="relative">
               <m.h1
                 variants={bottomIn()}
@@ -85,7 +88,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
           </div>
 
           <m.section
-            className="relative my-40 block h-[70px] w-screen overflow-x-hidden"
+            className="bg-white relative my-40 block h-[70px] w-screen overflow-x-hidden"
             variants={bottomIn()}
             initial="hidden"
             whileInView="visible"
@@ -100,7 +103,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </Marquee>
           </m.section>
 
-          <div className="w-full cont grid gap-24 pb-20 overflow-x-hidden">
+          <div className="bg-white w-full cont grid gap-24 pb-20 overflow-x-hidden">
             <section className="w-full">
               <m.h2
                 className="mb-9"

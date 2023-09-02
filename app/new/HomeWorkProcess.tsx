@@ -47,7 +47,7 @@ export default function HomeWorkProcess({
                     <m.div
                       variants={rightLeftContainer(
                         i === 0 ? 0.4 : 0.4 + 0.4 * ((i + 1) / 3),
-                        0.3,
+                        0.25,
                         "30px"
                       )}
                       initial="hidden"
@@ -64,7 +64,7 @@ export default function HomeWorkProcess({
                         {(i + 1).toString().padStart(2, "0")}
                       </m.p>
                       <m.div
-                        variants={rightLeft(0, "-50px")}
+                        variants={rightLeft(0, "50px")}
                         viewport={{ once: true }}
                       >
                         <h3 className="mb-4 text-noir">{process.title}</h3>

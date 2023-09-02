@@ -1,12 +1,12 @@
 "use client";
 
 import { Homepage, Image as ImageType } from "@/types/cms";
-import {
+/*import {
   bottomInY,
   fadeIn,
   rightLeft,
   rightLeftContainer,
-} from "@/utils/variants";
+} from "@/utils/variants";*/
 import PeelButton from "@/components/PeelButton";
 import Timezone from "@/components/Timezone";
 import HomeHeroShowcase from "./HomeHeroShowcase";
@@ -32,10 +32,10 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       >
         <div className="relative min-h-[100svh] w-full flex flex-col justify-end pb-8 pt-[92px] overflow-hidden">
           <m.div
-            variants={fadeIn()}
+            /*variants={fadeIn()}
             initial="hidden"
             animate="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true }}*/
             className="absolute min-h-[100svh] inset-0 w-full h-full flex items-center justify-center pointer-events-none"
           >
             <Image
@@ -52,10 +52,10 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
             <div className="w-full flex lg:items-end flex-col lg:flex-row gap-4 lg:gap-0 mb-14">
               <div className="flex-1 lg:flex-[0.5] lg:min-w-[524px] flex flex-col">
                 <m.h1
-                  variants={bottomInY()}
+                  /*variants={bottomInY()}
                   initial="hidden"
                   animate="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true }}*/
                   className="max-w-[524px] text-4xl sm:text-[54px] leading-none font-bold text-white"
                 >
                   {mainHeading}
@@ -63,10 +63,10 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
               </div>
               <div className="flex-1 lg:flex-[0.5] lg:pl-8">
                 <m.h2
-                  variants={bottomInY()}
+                  /*variants={bottomInY()}
                   initial="hidden"
                   animate="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true }}*/
                   className="max-w-[360px] text-[21px] font-medium text-white"
                 >
                   {subHeading}
@@ -77,10 +77,10 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
             {/* bottom */}
             <div className="w-full flex flex-col sm:flex-row sm:items-end justify-between md:justify-start gap-6 sm:gap-0">
               <m.div
-                variants={bottomInY(0.4)}
+                /*variants={bottomInY(0.4)}
                 initial="hidden"
                 animate="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true }}*/
                 className="lg:min-w-[524px] grid gap-3 md:flex-[0.5] text-white"
               >
                 {timezones.map((item) => (
@@ -88,30 +88,41 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
                 ))}
               </m.div>
               <m.ul
-                variants={rightLeftContainer(0.4, 0.3, "50px")}
+                /*variants={rightLeftContainer(0.4, 0.3, "50px")}
                 initial="hidden"
                 animate="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true }}*/
                 className="flex flex-wrap md:flex-[0.5] gap-4 sm:gap-6 items-center sm:pl-8"
               >
                 {heroLinks?.map(({ url, label, newTab }, i) => (
                   <m.li
                     key={i}
-                    variants={rightLeft(0, "50px")}
-                    viewport={{ once: true }}
+                    /*variants={rightLeft(0, "50px")}
+                    viewport={{ once: true }}*/
                   >
                     <Link target={newTab ? "_blank" : "_self"} href={url}>
-                      <PeelButton className="text-xs">{label}</PeelButton>
+                      <PeelButton className="text-sm">{label}</PeelButton>
                     </Link>
                   </m.li>
                 ))}
-                <m.li variants={rightLeft(0, "50px")} viewport={{ once: true }}>
+                <m.li /*variants={rightLeft(0, "50px")} viewport={{ once: true }}*/
+                >
                   <PeelButton
-                    className="text-xs"
+                    className="text-sm"
                     onClick={() => {
-                      document
-                        .querySelector(".work-showcase")
-                        ?.scrollIntoView({ behavior: "smooth" });
+                      console.log(
+                        window.scrollY,
+                        document
+                          .querySelector(".work-showcase")
+                          ?.getBoundingClientRect().y ?? 0
+                      );
+                      window?.scrollTo({
+                        left: 0,
+                        top:
+                          (document.querySelector(".work-showcase") as any)
+                            ?.offsetTop ?? 0,
+                        behavior: "smooth",
+                      });
                     }}
                   >
                     VIEW WORK

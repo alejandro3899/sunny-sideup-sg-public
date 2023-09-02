@@ -11,8 +11,8 @@ export const sectionVariants = {
   },
 };
 
-export const bottomInY = (delay?: number) => ({
-  hidden: { opacity: 0, y: "80px", scale: 1.1 },
+export const bottomInY = (delay?: number, scale = true) => ({
+  hidden: { opacity: 0, y: "80px", scale: scale ? 1.1 : 1.0 },
   visible: {
     opacity: 1,
     y: 0,
@@ -24,8 +24,8 @@ export const bottomInY = (delay?: number) => ({
   },
 });
 
-export const bottomIn = (delay?: number) => ({
-  hidden: { opacity: 0, x: "80px", y: "80px", scale: 1.1 },
+export const bottomIn = (delay?: number, scale = true) => ({
+  hidden: { opacity: 0, x: "80px", y: "80px", scale: scale ? 1.1 : 1.0 },
   visible: {
     opacity: 1,
     x: 0,

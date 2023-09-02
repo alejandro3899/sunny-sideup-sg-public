@@ -1,4 +1,4 @@
-import { Contact, Homepage, Navigation, Setting } from "@/types/cms";
+import { Contact, Footer, Homepage, Navigation, Setting } from "@/types/cms";
 import { getGlob } from "@/utils/api";
 import HomePage from "./HomePage";
 
@@ -8,6 +8,7 @@ export default async function App() {
     await getGlob<Navigation>("/navigation");
   const contact = await getGlob<Contact>("/contact");
   const { siteBranding } = await getGlob<Setting>("/settings");
+  const footer = await getGlob<Footer>("/footer");
 
   return (
     <>
@@ -17,6 +18,7 @@ export default async function App() {
         navItems={topNavigation}
         contact={contact}
         contactLink={contactLink}
+        footer={footer}
       />
     </>
   );

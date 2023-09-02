@@ -9,9 +9,15 @@ function apiFetch(url: string, options: RequestInit = {}) {
     },
   };
 
+  const next = {
+    revalidate: 120,
+    ...options.next,
+  };
+
   const mergedOptions = {
     ...defaultOptions,
     ...options,
+    next,
   };
 
   return fetch(url, mergedOptions).then((res) => {

@@ -53,7 +53,7 @@ export default function HomeShowcase({
                 >
                   <div
                     key={i}
-                    className="w-full h-[420px] sm:h-[500px] rounded-md overflow-hidden mb-4"
+                    className="w-full h-[420px] sm:h-[500px] rounded-lg overflow-hidden mb-4"
                   >
                     <ImageKit
                       image={heroImage as Image}

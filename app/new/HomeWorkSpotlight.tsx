@@ -36,6 +36,7 @@ export default function HomeWorkSpotlight({
                 initial="hidden"
                 whileInView="visible"
                 className="flex gap-4 flex-wrap mb-6"
+                viewport={{ once: true }}
               >
                 {(process ?? []).map((item, i) => {
                   return (
@@ -66,7 +67,7 @@ export default function HomeWorkSpotlight({
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 1.5, type: "spring", bounce: 0 }}
                   viewport={{ once: true }}
-                  className="w-full my-4 border border-black border-opacity-50"
+                  className="max-w-[340px] w-full my-4 border border-black border-opacity-50"
                 />
                 <m.p
                   variants={bottomInY()}
