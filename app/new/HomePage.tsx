@@ -112,12 +112,11 @@ export default function HomePage({
         altBrandingColour={isWhite}
         fullWidth={false}
       />
-
       <HomeHero hero={hero} />
-      {/* <HomeShowcase workShowcase={workShowcase} /> */}
-      {/* <HomeWorkSpotlight workSpotlight={workSpotlight} /> */}
-      {/* <HomeTestimonials testimonials={testimonials} /> */}
-      {/* <HomeWorkProcess workProcess={workProcess} /> */}
+      <HomeShowcase workShowcase={workShowcase} />
+      <HomeWorkSpotlight workSpotlight={workSpotlight} />
+      <HomeTestimonials testimonials={testimonials} />
+      <HomeWorkProcess workProcess={workProcess} />
     </>
   );
 }

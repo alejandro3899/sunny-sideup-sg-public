@@ -22,7 +22,7 @@ export default function HomeHeroShowcase({
 
   return (
     <div className="relative w-full flex justify-center items-center">
-      <div className="w-full h-screen min-h-[500px]">
+      <div className="w-full h-[100svh] min-h-[500px]">
         {isVideo ? (
           <video controls={false} className="w-full h-full">
             <source src={url} />

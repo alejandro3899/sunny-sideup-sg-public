@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: only light;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -98,4 +102,10 @@ body {
   transform: translate(-50%, -50%) scale(0.3);
   box-shadow: 2px -3px 41px -1px rgba(250, 250, 250, 0.64);
   z-index: 1000;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light only;
+  }
 }

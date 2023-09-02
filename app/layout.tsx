@@ -37,9 +37,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       ].join(" ")}
       suppressHydrationWarning={true}
     >
+      <meta name="color-scheme" content="light only" />
       <head />
       <body
-        className="relative flex min-h-screen flex-col"
+        className="relative flex min-h-[100svh] flex-col"
         suppressHydrationWarning={true}
       >
         {children}

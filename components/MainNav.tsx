@@ -80,6 +80,13 @@ export default function MainNav({
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
+    /*function handleSetVh() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }
+
+    window.addEventListener("resize", handleSetVh);*/
+
     let curs: HTMLDivElement = document.querySelector(".cursor")!;
     let initCursor = false;
 
@@ -113,6 +120,7 @@ export default function MainNav({
     return () => {
       document.removeEventListener("mousemove", handleMove);
       document.removeEventListener("mouseout", handleMouseOut);
+      // document.removeEventListener("resize", handleSetVh);
     };
   }, []);
 
