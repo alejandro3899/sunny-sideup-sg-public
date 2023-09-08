@@ -50,13 +50,12 @@ export default function ProjectSections({ project }: { project: Project }) {
               </div>
             );
           case "imagesBlock":
-            return section.images.map((image: any) => {
+            return (section?.images ?? []).map((image: any) => {
               const assetType = (image.image as Image).mimeType?.split("/")[0];
               return (
-                <div className="overflow-hidden">
+                <div  key={section.id! + image.id} className="overflow-hidden">
                   {assetType === "video" ? (
                     <m.video
-                      key={section.id! + image.id}
                       src={(image.image as Image)?.imagekit?.url}
                       variants={sectionVariants}
                       initial="hidden"
@@ -68,7 +67,6 @@ export default function ProjectSections({ project }: { project: Project }) {
                     />
                   ) : (
                     <m.img
-                      key={section.id! + image.id}
                       src={(image.image as Image)?.imagekit?.url}
                       alt={(image.image as Image).altText}
                       variants={sectionVariants}
