@@ -101,12 +101,13 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
                     viewport={{ once: true }}*/
                   >
                     <Link target={newTab ? "_blank" : "_self"} href={url}>
-                      <PeelButton className="text-sm">{label}</PeelButton>
+                      <PeelButton className="text-[12px] md:text-sm">
+                        {label}
+                      </PeelButton>
                     </Link>
                   </m.li>
                 ))}
-                <m.li /*variants={rightLeft(0, "50px")} viewport={{ once: true }}*/
-                >
+                {/* <m.li>
                   <PeelButton
                     className="text-sm"
                     onClick={() => {
@@ -127,7 +128,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
                   >
                     VIEW WORK
                   </PeelButton>
-                </m.li>
+                </m.li> */}
               </m.ul>
             </div>
           </div>

@@ -6,8 +6,8 @@ import { bottomIn, rightLeft, rightLeftContainer } from "@/utils/variants";
 import { AnimatedLine } from "@/components/AnimatedLine";
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
+import Smooth from "@/components/Smooth";
 
 interface AboutPageProps {
   aboutData: AboutTypes;
@@ -16,11 +16,6 @@ interface AboutPageProps {
 export default function AboutPage({ aboutData }: AboutPageProps) {
   const { hero, intro, expertise, team, clients, recognition, work } =
     aboutData;
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
 
   return (
     <>
@@ -28,15 +23,33 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
         {`
           body {
             background-color: white;
+            overflow-y: scroll;
           }
           .main-nav {
             width: 100%;
             max-width: 100vw;
             margin: 0;
           }
+          ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background: rgb(235, 235, 235);
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: rgb(205, 205, 205);
+            border-radius: 6px;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+            cursor: pointer;
+            background-color: rgb(190, 190, 190);
+          }
         `}
       </style>
-      {loaded && (
+
+      <Smooth data-scroller>
+        (
         <LazyMotion features={domAnimation}>
           <div className="bg-white cont grid gap-24 pt-[92px]">
             <section className="relative">
@@ -103,7 +116,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </Marquee>
           </m.section>
 
-          <div className="bg-white w-full cont grid gap-24 pb-20 overflow-x-hidden">
+          <div className="bg-white w-full cont flex flex-col gap-24 pb-20 overflow-hidden">
             <section className="w-full">
               <m.h2
                 className="mb-9"
@@ -269,7 +282,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </section>
 
             <section>
-              <Link href="/">
+              <Link href="/" className="button">
                 <m.div
                   className="grid h-[575px] place-content-center rounded-[40px] bg-cover bg-center"
                   style={{
@@ -289,7 +302,8 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </section>
           </div>
         </LazyMotion>
-      )}
+        )
+      </Smooth>
     </>
   );
 }

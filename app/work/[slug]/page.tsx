@@ -1,8 +1,7 @@
-import { Image, Project } from "@/types/cms";
+import { Project } from "@/types/cms";
 import { getColl } from "@/utils/api";
+import WorkPage from "./WorkPage";
 import slug from "slug";
-import ProjectDescription from "./ProjectDescription";
-import ProjectSections from "./ProjectSections";
 
 export async function generateStaticParams() {
   const { docs: works } = await getColl<Project>("/projects");
@@ -22,19 +21,5 @@ export default async function WorkDetails({ params }: WorkDetailsProps) {
   });
   const project = docs[0];
 
-  return (
-    <>
-      <div
-        className="h-[350px] bg-cover bg-center sm:h-[500px]"
-        style={{
-          backgroundImage: `url('${(project.heroImage as Image)?.imagekit
-            ?.url}')`,
-        }}
-      />
-      <div className="bg-white cont grid gap-14 pt-8 pb-20 md:gap-20">
-        <ProjectDescription project={project} />
-        <ProjectSections project={project} />
-      </div>
-    </>
-  );
+  return <WorkPage project={project} />;
 }

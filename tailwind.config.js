@@ -11,13 +11,6 @@ module.exports = {
       screens: {
         "2xl": "1600px",
       },
-      /*padding: {
-        DEFAULT: "16px",
-        sm: "20px",
-        lg: "20px",
-        xl: "20px",
-        "2xl": "20px",
-      }*/
     },
     extend: {
       colors: {

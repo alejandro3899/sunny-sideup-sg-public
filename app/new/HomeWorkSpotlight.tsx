@@ -32,7 +32,7 @@ export default function HomeWorkSpotlight({
 
             <div className="grid grid-cols-1 w-fit">
               <m.div
-                variants={rightLeftContainer(0.4, 0.3, "50px")}
+                variants={rightLeftContainer(0, 0.3, "50px")}
                 initial="hidden"
                 whileInView="visible"
                 className="flex gap-4 flex-wrap mb-6"
@@ -63,12 +63,20 @@ export default function HomeWorkSpotlight({
                   AVG COMPLETION TIME
                 </m.p>
                 <m.div
-                  initial={{ width: "0%" }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 1.5, type: "spring", bounce: 0 }}
+                  variants={bottomInY()}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  className="max-w-[340px] w-full my-4 border border-black border-opacity-50"
-                />
+                  className="w-full"
+                >
+                  <m.div
+                    initial={{ width: "0%" }}
+                    whileInView={{ width: "100%" }}
+                    transition={{ duration: 1.5, type: "spring", bounce: 0 }}
+                    viewport={{ once: true }}
+                    className="max-w-[340px] w-full my-4 border border-black border-opacity-50"
+                  />
+                </m.div>
                 <m.p
                   variants={bottomInY()}
                   initial="hidden"
@@ -84,7 +92,7 @@ export default function HomeWorkSpotlight({
 
           {/* right */}
           <m.div
-            variants={bottomInY(0.4)}
+            variants={bottomInY(0.3)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

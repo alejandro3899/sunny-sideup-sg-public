@@ -10,7 +10,7 @@ function apiFetch(url: string, options: RequestInit = {}) {
   };
 
   const next = {
-    revalidate: 120,
+    revalidate: 60,
     ...options.next,
   };
 

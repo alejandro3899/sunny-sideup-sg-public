@@ -35,7 +35,10 @@ export default function ProjectSections({ project }: { project: Project }) {
         switch (section.blockType) {
           case "textBlock":
             return (
-              <div key={section.id} className="grid gap-6 md:grid-cols-2">
+              <div
+                key={section.id}
+                className="grid gap-6 md:grid-cols-2 overflow-hidden"
+              >
                 <TextBlockSection
                   heading={section.leftColumn.heading}
                   content={section.leftColumn.content}
@@ -49,28 +52,32 @@ export default function ProjectSections({ project }: { project: Project }) {
           case "imagesBlock":
             return section.images.map((image: any) => {
               const assetType = (image.image as Image).mimeType?.split("/")[0];
-              return assetType === "video" ? (
-                <m.video
-                  key={section.id! + image.id}
-                  src={(image.image as Image)?.imagekit?.url}
-                  variants={sectionVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  autoPlay
-                  muted
-                  loop
-                />
-              ) : (
-                <m.img
-                  key={section.id! + image.id}
-                  src={(image.image as Image)?.imagekit?.url}
-                  alt={(image.image as Image).altText}
-                  variants={sectionVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                />
+              return (
+                <div className="overflow-hidden">
+                  {assetType === "video" ? (
+                    <m.video
+                      key={section.id! + image.id}
+                      src={(image.image as Image)?.imagekit?.url}
+                      variants={sectionVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      autoPlay
+                      muted
+                      loop
+                    />
+                  ) : (
+                    <m.img
+                      key={section.id! + image.id}
+                      src={(image.image as Image)?.imagekit?.url}
+                      alt={(image.image as Image).altText}
+                      variants={sectionVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    />
+                  )}
+                </div>
               );
             });
           default:

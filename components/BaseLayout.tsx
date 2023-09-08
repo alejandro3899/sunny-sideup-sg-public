@@ -8,6 +8,7 @@ import {
   Setting,
 } from "@/types/cms";
 import { ReactElement } from "react";
+import Container from "./Container";
 
 interface BaseLayoutProps {
   children: React.ReactNode;
@@ -43,7 +44,9 @@ const BaseLayout = async function ({
           fullWidth={fullWidth}
         />
       )}
-      <main className="relative flex-1">{children}</main>
+      <main className="relative flex-1">
+        <Container>{children}</Container>
+      </main>
       {renderFooter && <Footer {...footer} />}
     </>
   );

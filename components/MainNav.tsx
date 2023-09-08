@@ -67,7 +67,7 @@ const modalVariants = {
 };
 
 const navLinkStyles =
-  "text-medium grid h-9 place-content-center rounded-full border border-[#E1E1E1] bg-white/50 backdrop-blur-md px-4 hover:border-gray-400";
+  "button text-medium grid h-9 place-content-center rounded-full border border-[#E1E1E1] bg-white/50 backdrop-blur-md px-4 hover:border-gray-400";
 
 export default function MainNav({
   siteBranding,
@@ -125,7 +125,7 @@ export default function MainNav({
     >
       <Link
         href="/"
-        className={`grid place-content-center text-lg font-semibold tracking-tighter ${
+        className={`button grid place-content-center text-lg font-semibold tracking-tighter ${
           altBrandingColour ? "text-white" : ""
         }`}
         style={{ mixBlendMode: "difference" }}
@@ -155,10 +155,14 @@ export default function MainNav({
         </Link> */}
         {!contactLink.hide && (
           <div
-            className={clsx("cursor-pointer aspect-square", navLinkStyles, {
-              "!bg-transparent text-white !border-none shadow-[0_0_0_1px_white] hover:shadow-[0_0_0_1px_#9ca3af] transition-all":
-                altBrandingColour,
-            })}
+            className={clsx(
+              "button cursor-pointer aspect-square w-9 h-9",
+              navLinkStyles,
+              {
+                "!bg-transparent text-white !border-none shadow-[0_0_0_1px_white] hover:shadow-[0_0_0_1px_#9ca3af] transition-all":
+                  altBrandingColour,
+              }
+            )}
             onClick={() =>
               modalOpen ? setModalOpen(false) : setModalOpen(true)
             }

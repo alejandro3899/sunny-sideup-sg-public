@@ -15,7 +15,7 @@ import HomeWorkProcess from "./HomeWorkProcess";
 import { useEffect, useState } from "react";
 import MainNav from "@/components/MainNav";
 import Footer from "@/components/Footer";
-import Smooth from "./Smooth";
+import Smooth from "../../components/Smooth";
 
 type Props = {
   home: Homepage;
@@ -112,6 +112,27 @@ export default function HomePage({
 
   return (
     <>
+      <style>
+        {`
+          body {
+            overflow-y: scroll;
+          }
+          ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background: rgb(235, 235, 235);
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: rgb(205, 205, 205);
+            border-radius: 6px;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(190, 190, 190);
+          }
+        `}
+      </style>
       <MainNav
         siteBranding={siteBranding}
         navItems={navItems}
@@ -120,7 +141,7 @@ export default function HomePage({
         altBrandingColour={isWhite}
         fullWidth={false}
       />
-      <Smooth data-scroller className="w-full">
+      <Smooth data-scroller>
         <HomeHero hero={hero} />
         <HomeShowcase workShowcase={workShowcase} />
         <HomeWorkSpotlight workSpotlight={workSpotlight} />

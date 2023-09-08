@@ -45,11 +45,7 @@ export default function HomeWorkProcess({
                 {process.map((process, i) => {
                   return (
                     <m.div
-                      variants={rightLeftContainer(
-                        i === 0 ? 0.4 : 0.4 + 0.4 * ((i + 1) / 3),
-                        0.25,
-                        "30px"
-                      )}
+                      variants={rightLeftContainer(0.3, 0.3, "30px")}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}

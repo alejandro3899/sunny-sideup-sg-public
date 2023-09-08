@@ -131,6 +131,7 @@ export interface Homepage {
     workShowcase: {
       work?: string | Project;
       tag?: string;
+      media?: string | Image;
       id?: string;
     }[];
   };
