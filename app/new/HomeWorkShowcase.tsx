@@ -15,7 +15,7 @@ export default function HomeShowcase({
   const { heading, subHeading, workShowcase: works } = workShowcase;
 
   useEffect(() => {
-    const works = document.querySelectorAll(".work-showcase .work");
+    const works = document.querySelectorAll(".home-work-showcase .work");
 
     function handleMouseOver() {
       document.querySelector(".cursor")?.classList.add("view");
@@ -49,7 +49,7 @@ export default function HomeShowcase({
     <LazyMotion features={domAnimation}>
       <section
         data-theme="light"
-        className="work-showcase w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12 overflow-hidden"
+        className="home-work-showcase w-full bg-white mb-0 sm:mb-20 py-8 sm:py-12 overflow-hidden"
       >
         <div className="container overflow-hidden">
           <div className="max-w-[594px] mr-auto w-full flex flex-col mb-14 sm:mb-20">
@@ -74,7 +74,12 @@ export default function HomeShowcase({
           </div>
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
             {(works ?? []).map(({ work, tag, media }, i) => {
-              const { clientName, heroImage, slug } = work as Project;
+              const {
+                clientName,
+                heroImage,
+                slug,
+                tags = [],
+              } = work as Project;
 
               const hasMedia = !!media;
               const isVideo = (media as Image)?.mimeType?.includes("video");
@@ -151,14 +156,19 @@ export default function HomeShowcase({
                         {clientName}
                       </Link>
                     </m.h3>
-                    {tag && (
-                      <m.div
-                        variants={rightLeft(0, "50px")}
-                        viewport={{ once: true }}
-                        className="text-sm uppercase font-sans border border-noir px-3 py-2 rounded-full"
-                      >
-                        <span>{tag}</span>
-                      </m.div>
+                    {tags.length >= 1 && (
+                      <div className="flex gap-4">
+                        {tags.map(({ tag }, i) => (
+                          <m.div
+                            key={i}
+                            variants={rightLeft(0, "50px")}
+                            viewport={{ once: true }}
+                            className="text-sm uppercase font-sans border border-noir px-3 py-2 rounded-full"
+                          >
+                            <span>{tag}</span>
+                          </m.div>
+                        ))}
+                      </div>
                     )}
                   </m.div>
                 </div>

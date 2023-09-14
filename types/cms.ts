@@ -40,6 +40,10 @@ export interface Project {
   }[];
   scope?: string;
   credits?: string;
+  tags?: {
+    tag: string;
+    id?: string;
+  }[];
   sections?: (
     | {
         leftColumn?: {

@@ -13,7 +13,7 @@ export default function HomeWorkProcess({
     <LazyMotion features={domAnimation}>
       <section
         data-theme="light"
-        className="w-full min-h-[100svh] bg-white py-8 sm:py-12 pb-28 sm:pb-32 overflow-hidden"
+        className="w-full bg-white py-8 sm:py-12 pb-28 sm:pb-32 overflow-hidden"
       >
         <div className="container">
           <div className="w-full justify-between flex flex-col lg:flex-row gap-16">
