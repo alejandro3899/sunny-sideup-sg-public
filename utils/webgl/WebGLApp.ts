@@ -34,15 +34,15 @@ export type WebGLAppOptions = {
 
 class DefaultSizeProvider {
   get width() {
-    return window.innerWidth;
+    return window?.innerWidth;
   }
 
   get height() {
-    return window.innerHeight;
+    return window?.innerHeight;
   }
 
   get pixelRatio() {
-    return Math.min(window.devicePixelRatio, 2);
+    return Math.min(window?.devicePixelRatio, 2);
   }
 }
 
@@ -127,7 +127,7 @@ export default class WebGLApp {
       this.orbitControls = orbitControls;
     }
 
-    window.addEventListener("resize", this._onResize);
+    window?.addEventListener("resize", this._onResize);
     canvas.addEventListener("pointerdown", this._onPointerDown);
     canvas.addEventListener("pointermove", this._onPointerMove);
     canvas.addEventListener("pointerup", this._onPointerUp);
@@ -268,7 +268,7 @@ export default class WebGLApp {
   dispose() {
     this.stop();
 
-    window.removeEventListener("resize", this._onResize);
+    window?.removeEventListener("resize", this._onResize);
     this.canvas.removeEventListener("pointerdown", this._onPointerDown);
     this.canvas.removeEventListener("pointermove", this._onPointerMove);
     this.canvas.removeEventListener("pointerup", this._onPointerUp);

@@ -154,7 +154,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       /**
        * Toggle animation
        */
-      window.addEventListener("keyup", (event) => {
+      window?.addEventListener("keyup", (event) => {
         if (event.key === " ") {
           webgl.isAnimationActive = !webgl.isAnimationActive;
         }
