@@ -5,15 +5,15 @@ const useWindowDimensions = function () {
 
   useEffect(() => {
     const handleSetSize = function () {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
+      setSize({ width: window?.innerWidth, height: window?.innerHeight });
     };
 
     handleSetSize();
 
-    window.addEventListener("resize", handleSetSize);
+    window?.addEventListener("resize", handleSetSize);
 
     return () => {
-      window.removeEventListener("resize", handleSetSize);
+      window?.removeEventListener("resize", handleSetSize);
     };
   }, []);
 

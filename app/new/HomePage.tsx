@@ -47,13 +47,13 @@ export default function HomePage({
     let prevYPosition = 0;
 
     const setScrollDirection = () => {
-      if (window.scrollY > prevYPosition) {
+      if (window?.scrollY > prevYPosition) {
         direction = "down";
       } else {
         direction = "up";
       }
 
-      prevYPosition = window.scrollY;
+      prevYPosition = window?.scrollY;
     };
 
     const getTargetSection = (target: Element) => {

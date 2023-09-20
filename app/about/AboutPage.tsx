@@ -57,7 +57,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                 variants={bottomIn()}
                 initial="hidden"
                 animate="visible"
-                className="max-w-[630px] text-blue"
+                className="max-w-[630px]"
               >
                 {hero!.heroHeading}
               </m.h1>

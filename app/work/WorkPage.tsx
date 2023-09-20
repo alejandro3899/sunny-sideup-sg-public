@@ -81,14 +81,9 @@ export default function WorkPage({ workData, works = [] }: WorkPageProps) {
       <Smooth data-scroller>
         {loaded && (
           <LazyMotion features={domAnimation}>
-            <div
-              className="bg-white bg-cover bg-center h-[377px] grid place-content-center text-center"
-              style={{
-                backgroundImage: `linear-gradient(180deg, ${backgroundGradient} 0%, rgba(0, 0, 0, 0) 37.5%)`,
-              }}
-            >
+            <div className="bg-white bg-cover bg-center h-[377px] grid place-content-center text-center">
               <h1>{heading}</h1>
-              <p className="p-small mt-3">{subHeading}</p>
+              {subHeading && <p className="p-small mt-3">{subHeading}</p>}
             </div>
             <div className="cont">
               <div className="works grid sm:grid-cols-2 gap-x-3 gap-y-9">

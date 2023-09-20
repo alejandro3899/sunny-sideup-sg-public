@@ -134,7 +134,6 @@ export interface Homepage {
     subHeading: string;
     workShowcase: {
       work?: string | Project;
-      tag?: string;
       media?: string | Image;
       id?: string;
     }[];
@@ -298,7 +297,7 @@ export interface About {
 export interface ProjectsHero {
   id: string;
   heading: string;
-  subHeading: string;
+  subHeading?: string;
   backgroundGradient: string;
   updatedAt?: string;
   createdAt?: string;

@@ -35,7 +35,7 @@ export default function HomeWorkSpotlight({
                 variants={rightLeftContainer(0, 0.3, "50px")}
                 initial="hidden"
                 whileInView="visible"
-                className="flex gap-4 flex-wrap mb-6"
+                className="max-w-2xl flex gap-2 flex-wrap mb-6"
                 viewport={{ once: true }}
               >
                 {(process ?? []).map((item, i) => {

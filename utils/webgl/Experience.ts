@@ -21,8 +21,6 @@ export type ExperienceOptions = WebGLAppOptions & {
   };
 };
 
-export const isDebug = window?.location?.search?.includes("debug");
-
 let instance: Experience | null = null;
 
 /**
@@ -56,11 +54,6 @@ export default class Experience extends WebGLApp {
     super(options);
 
     instance = this;
-
-    if (isDebug) {
-      // @ts-ignore
-      window?.webgl = this;
-    }
 
     if (options.postprocessing) {
       const composer = new EffectComposer(this.renderer, {

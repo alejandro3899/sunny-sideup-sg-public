@@ -1,7 +1,7 @@
 "use client";
 
 import { Homepage, Image as ImageType } from "@/types/cms";
-import Experience, { isDebug } from "@/utils/webgl/Experience";
+import Experience from "@/utils/webgl/Experience";
 import assets from "@/utils/webgl/assets";
 import { addLights } from "@/utils/webgl/scene/lights";
 import { addEffects } from "@/utils/webgl/scene/effects";
@@ -34,7 +34,6 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
         canvas: document.querySelector("canvas.webgl") as HTMLCanvasElement,
       },
       orbitControls: true,
-      stats: isDebug,
       gui: true,
       postprocessing: true,
     });
@@ -154,7 +153,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       /**
        * Toggle animation
        */
-      window?.addEventListener("keyup", (event) => {
+      (window ?? null)?.addEventListener("keyup", (event) => {
         if (event.key === " ") {
           webgl.isAnimationActive = !webgl.isAnimationActive;
         }
@@ -517,10 +516,12 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
         className="w-full bg-black text-white overflow-hidden"
       >
         <div className="relative min-h-[100svh] w-full flex flex-col justify-end items-stretch pb-8 pt-[92px] overflow-hidden">
-          <div className="fixed top-0 left-0 w-full pointer-events-none">
-            <canvas className="webgl absolute sm:left-1/4" />
-          </div>
-          {/* <m.div className="absolute min-h-[100svh] inset-0 w-full h-full flex items-center justify-center pointer-events-none">
+          {
+            <div className="fixed top-0 left-0 w-full hidden lg:block pointer-events-none">
+              <canvas className="webgl absolute xl:left-1/4" />
+            </div>
+          }
+          <m.div className="absolute min-h-[100svh] inset-0 w-full h-full flex lg:hidden items-center justify-center pointer-events-none">
             <Image
               src={(backgroundImage as ImageType)?.imagekit?.url!}
               alt={(backgroundImage as ImageType)?.altText ?? "Hero"}
@@ -528,7 +529,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
               height={825}
               className="h-auto w-[90%] sm:w-3/4 max-w-[800px] mx-auto z-[1] -translate-y-[15%] sm:translate-y-0"
             />
-          </m.div> */}
+          </m.div>
 
           <div className="container flex flex-col z-[2]">
             {/* top */}
