@@ -72,7 +72,7 @@ export default function HomeShowcase({
               {subHeading}
             </m.h3>
           </div>
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6 lg:gap-y-8">
             {(works ?? []).map(({ work, media }, i) => {
               const {
                 clientName,
