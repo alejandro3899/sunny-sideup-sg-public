@@ -49,7 +49,6 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
       </style>
 
       <Smooth data-scroller>
-        (
         <LazyMotion features={domAnimation}>
           <div className="bg-white cont grid gap-24 pt-[92px]">
             <section className="relative">

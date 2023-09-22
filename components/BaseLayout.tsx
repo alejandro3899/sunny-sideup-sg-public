@@ -25,11 +25,26 @@ const BaseLayout = async function ({
   renderNav = true,
   renderFooter = false,
 }: BaseLayoutProps) {
-  const { topNavigation, contactLink } =
-    await getGlob<Navigation>("/navigation");
-  const contact = await getGlob<Contact>("/contact");
-  const { siteBranding } = await getGlob<Setting>("/settings");
-  const footer = await getGlob<FooterTypes>("/footer");
+  const { topNavigation, contactLink } = await getGlob<Navigation>(
+    "/navigation",
+    {},
+    { next: { tags: ["navigation"] } }
+  );
+  const contact = await getGlob<Contact>(
+    "/contact",
+    {},
+    { next: { tags: ["contact"] } }
+  );
+  const { siteBranding } = await getGlob<Setting>(
+    "/settings",
+    {},
+    { next: { tags: ["settings"] } }
+  );
+  const footer = await getGlob<FooterTypes>(
+    "/footer",
+    {},
+    { next: { tags: ["footer"] } }
+  );
 
   return (
     <>

@@ -13,12 +13,13 @@ export interface Config {
     users: User;
   };
   globals: {
-    homepage: Homepage;
-    navigation: Navigation;
-    contact: Contact;
-    footer: Footer;
     settings: Setting;
+    navigation: Navigation;
+    favicon: Favicon;
+    footer: Footer;
+    homepage: Homepage;
     about: About;
+    contact: Contact;
     projectsHero: ProjectsHero;
   };
 }
@@ -108,6 +109,59 @@ export interface User {
   lockUntil?: string;
   password?: string;
 }
+export interface Setting {
+  id: string;
+  siteTitle: string;
+  siteBranding: string;
+  siteDescription: string;
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface Navigation {
+  id: string;
+  topNavigation?: {
+    label: string;
+    url: string;
+    newTab?: boolean;
+    hide?: boolean;
+    id?: string;
+  }[];
+  contactLink: {
+    label: string;
+    hide?: boolean;
+  };
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface Favicon {
+  id: string;
+  favicon?: string | Image;
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface Footer {
+  id: string;
+  contact: {
+    title: string;
+    text: string;
+    image?: string | Image;
+    contactButton: {
+      label: string;
+      link: string;
+      newTab?: boolean;
+    };
+  };
+  socialMediaLinks?: {
+    label: string;
+    url: string;
+    newTab?: boolean;
+    hide?: boolean;
+    id?: string;
+  }[];
+  bottomTitle?: string;
+  updatedAt?: string;
+  createdAt?: string;
+}
 export interface Homepage {
   id: string;
   hero: {
@@ -182,59 +236,6 @@ export interface Homepage {
   updatedAt?: string;
   createdAt?: string;
 }
-export interface Navigation {
-  id: string;
-  topNavigation?: {
-    label: string;
-    url: string;
-    newTab?: boolean;
-    hide?: boolean;
-    id?: string;
-  }[];
-  contactLink: {
-    label: string;
-    hide?: boolean;
-  };
-  updatedAt?: string;
-  createdAt?: string;
-}
-export interface Contact {
-  id: string;
-  heading: string;
-  description: {
-    [k: string]: unknown;
-  }[];
-  email: string;
-  updatedAt?: string;
-  createdAt?: string;
-}
-export interface Footer {
-  id: string;
-  contact: {
-    title: string;
-    text: string;
-    image?: string | Image;
-    contactButtonText?: string;
-  };
-  socialMediaLinks?: {
-    label: string;
-    url: string;
-    newTab?: boolean;
-    hide?: boolean;
-    id?: string;
-  }[];
-  bottomTitle?: string;
-  updatedAt?: string;
-  createdAt?: string;
-}
-export interface Setting {
-  id: string;
-  siteTitle: string;
-  siteBranding: string;
-  siteDescription: string;
-  updatedAt?: string;
-  createdAt?: string;
-}
 export interface About {
   id: string;
   hero: {
@@ -291,6 +292,16 @@ export interface About {
     background: string | Image;
     buttonLabel: string;
   };
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface Contact {
+  id: string;
+  heading: string;
+  description: {
+    [k: string]: unknown;
+  }[];
+  email: string;
   updatedAt?: string;
   createdAt?: string;
 }

@@ -1,7 +1,10 @@
+import "@/styles/globals.css";
+
+import { Favicon, Image } from "@/types/cms";
+import { getGlob } from "@/utils/api";
+import clsx from "clsx";
 import localFont from "@next/font/local";
 import Script from "next/script";
-
-import "@/styles/globals.css";
 
 const autautGrotesk = localFont({
   src: [
@@ -27,18 +30,33 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+  const { favicon } = await getGlob<Favicon>(
+    "/favicon",
+    {},
+    { next: { tags: ["favicon"] } }
+  );
+  const faviconUrl = (favicon as Image)?.imagekit?.url;
+
   return (
     <html
       lang="en"
-      className={[
+      className={clsx(
         autautGrotesk.variable,
         monumentGrotesk.variable,
-        gaisyr.variable,
-      ].join(" ")}
+        gaisyr.variable
+      )}
       suppressHydrationWarning={true}
     >
-      <meta name="color-scheme" content="light only" />
-      <head />
+      <head>
+        <meta name="color-scheme" content="light only" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+        {faviconUrl && (
+          <link rel="icon" type="image/x-icon" href={faviconUrl} sizes="any" />
+        )}
+      </head>
       <body
         className="relative flex min-h-[100svh] flex-col"
         suppressHydrationWarning={true}

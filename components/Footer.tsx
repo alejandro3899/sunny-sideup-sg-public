@@ -12,6 +12,8 @@ export default function Footer({
   contact,
   socialMediaLinks,
 }: Footer) {
+  const { text, title, image, contactButton } = contact;
+
   return (
     <LazyMotion features={domAnimation}>
       <footer
@@ -29,7 +31,7 @@ export default function Footer({
                 viewport={{ once: true }}
                 className="text-4xl sm:text-8xl mb-4"
               >
-                {contact.title}
+                {title}
               </m.h2>
               <m.p
                 variants={bottomInY()}
@@ -38,7 +40,7 @@ export default function Footer({
                 viewport={{ once: true }}
                 className="max-w-md text-lg mb-6"
               >
-                {contact.text}
+                {text}
               </m.p>
               <m.div
                 variants={bottomInY()}
@@ -62,16 +64,19 @@ export default function Footer({
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Link href="/">
+              <a
+                href={contactButton.link}
+                target={contactButton.newTab ? "_blank" : "_self"}
+              >
                 <button
                   className={clsx(
                     "w-full rounded-full text-lg font-medium py-6 border-2 border-white/90",
                     "hover:border-white transition-all"
                   )}
                 >
-                  {contact.contactButtonText}
+                  {contactButton.label}
                 </button>
-              </Link>
+              </a>
             </m.div>
           </div>
 

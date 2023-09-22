@@ -1,5 +1,5 @@
-import qs from "qs";
 import type { PayloadApiArgs, PayloadCollection } from "@/types/payload";
+import qs from "qs";
 
 function apiFetch(url: string, options: RequestInit = {}) {
   const defaultOptions: RequestInit = {
@@ -9,15 +9,13 @@ function apiFetch(url: string, options: RequestInit = {}) {
     },
   };
 
-  const next = {
-    revalidate: 60,
-    ...options.next,
-  };
-
   const mergedOptions = {
     ...defaultOptions,
     ...options,
-    next,
+    next: {
+      revalidate: 60,
+      ...options.next,
+    },
   };
 
   return fetch(url, mergedOptions).then((res) => {
@@ -32,22 +30,26 @@ function apiFetch(url: string, options: RequestInit = {}) {
 
 export async function getColl<T>(
   endpoint: string,
-  query?: PayloadApiArgs
+  query?: PayloadApiArgs,
+  fetchOptions?: RequestInit
 ): Promise<PayloadCollection<T>> {
   const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
   const data = await apiFetch(
-    `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api${endpoint}${stringifiedQuery}`
+    `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api${endpoint}${stringifiedQuery}`,
+    fetchOptions ?? {}
   );
   return data;
 }
 
 export async function getGlob<T>(
   endpoint: string,
-  query?: PayloadApiArgs
+  query?: PayloadApiArgs,
+  fetchOptions?: RequestInit
 ): Promise<T> {
   const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
   const data = await apiFetch(
-    `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals${endpoint}${stringifiedQuery}`
+    `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals${endpoint}${stringifiedQuery}`,
+    fetchOptions ?? {}
   );
   return data;
 }

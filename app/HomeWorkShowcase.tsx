@@ -137,7 +137,7 @@ export default function HomeShowcase({
                     )}
                   </m.div>
                   <m.div
-                    variants={rightLeftContainer(0, 0.3, "50px")}
+                    variants={rightLeftContainer(0, 0.1, "50px")}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}

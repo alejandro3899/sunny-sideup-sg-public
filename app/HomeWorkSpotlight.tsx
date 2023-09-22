@@ -32,7 +32,7 @@ export default function HomeWorkSpotlight({
 
             <div className="grid grid-cols-1 w-fit">
               <m.div
-                variants={rightLeftContainer(0, 0.3, "50px")}
+                variants={rightLeftContainer(0, 0.05, "50px")}
                 initial="hidden"
                 whileInView="visible"
                 className="max-w-2xl flex gap-2 flex-wrap mb-6"

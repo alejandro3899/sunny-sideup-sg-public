@@ -4,12 +4,31 @@ import HomePage from "./HomePage";
 import BaseLayout from "@/components/BaseLayout";
 
 export default async function App() {
-  const home = await getGlob<Homepage>("/homepage", { depth: 3 });
-  const { topNavigation, contactLink } =
-    await getGlob<Navigation>("/navigation");
-  const contact = await getGlob<Contact>("/contact");
-  const { siteBranding } = await getGlob<Setting>("/settings");
-  const footer = await getGlob<Footer>("/footer");
+  const home = await getGlob<Homepage>(
+    "/homepage",
+    { depth: 3 },
+    { next: { tags: ["homepage"] } }
+  );
+  const { topNavigation, contactLink } = await getGlob<Navigation>(
+    "/navigation",
+    {},
+    { next: { tags: ["navigation"] } }
+  );
+  const contact = await getGlob<Contact>(
+    "/contact",
+    {},
+    { next: { tags: ["contact"] } }
+  );
+  const { siteBranding } = await getGlob<Setting>(
+    "/settings",
+    {},
+    { next: { tags: ["settings"] } }
+  );
+  const footer = await getGlob<Footer>(
+    "/footer",
+    {},
+    { next: { tags: ["footer"] } }
+  );
 
   return (
     <div className="bg-white flex-1 flex flex-col">
