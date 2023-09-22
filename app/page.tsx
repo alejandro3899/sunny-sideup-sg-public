@@ -1,25 +1,32 @@
-import { Homepage as HomepageTypes, Project } from "@/types/cms";
-import { getColl, getGlob } from "@/utils/api";
+import { Contact, Footer, Homepage, Navigation, Setting } from "@/types/cms";
+import { getGlob } from "@/utils/api";
+import HomePage from "./HomePage";
 import BaseLayout from "@/components/BaseLayout";
-import dynamic from "next/dynamic";
 
-const Homepage: any = dynamic(() => import("./Homepage"), {
-  ssr: false,
-});
-const HomeSpline: any = dynamic(() => import("../components/HomeSpline"), {
-  ssr: false,
-});
-
-export default async function Home() {
-  const homepage = await getGlob<HomepageTypes>("/homepage");
-  const { docs: projects } = await getColl<Project>("/projects", {
-    sort: "-projectYear",
-  });
+export default async function App() {
+  const home = await getGlob<Homepage>("/homepage", { depth: 3 });
+  const { topNavigation, contactLink } =
+    await getGlob<Navigation>("/navigation");
+  const contact = await getGlob<Contact>("/contact");
+  const { siteBranding } = await getGlob<Setting>("/settings");
+  const footer = await getGlob<Footer>("/footer");
 
   return (
-    <BaseLayout fullWidth={true} renderFooter={false}>
-      <HomeSpline />
-      <Homepage homepageData={homepage} projectsData={projects} />
-    </BaseLayout>
+    <div className="bg-white flex-1 flex flex-col">
+      <BaseLayout
+        altBrandingColour={true}
+        renderFooter={false}
+        renderNav={false}
+      >
+        <HomePage
+          home={home}
+          siteBranding={siteBranding}
+          navItems={topNavigation}
+          contact={contact}
+          contactLink={contactLink}
+          footer={footer}
+        />
+      </BaseLayout>
+    </div>
   );
 }
