@@ -64,7 +64,7 @@ export default function Footer({
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <a
+              <Link
                 href={contactButton.link}
                 target={contactButton.newTab ? "_blank" : "_self"}
               >
@@ -76,7 +76,7 @@ export default function Footer({
                 >
                   {contactButton.label}
                 </button>
-              </a>
+              </Link>
             </m.div>
           </div>
 
