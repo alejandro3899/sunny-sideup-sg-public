@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { Favicon, Image } from "@/types/cms";
+import { Favicon, Image, Setting } from "@/types/cms";
 import { getGlob } from "@/utils/api";
 import clsx from "clsx";
 import localFont from "@next/font/local";
@@ -27,6 +27,27 @@ const gaisyr = localFont({
 
 interface RootLayoutProps {
   children: React.ReactNode;
+}
+
+export async function generateMetadata() {
+  const { siteTitle, siteDescription } = await getGlob<Setting>(
+    "/settings",
+    {},
+    {
+      next: { tags: ["settings"] },
+    }
+  );
+
+  return {
+    title: siteTitle,
+    description: siteDescription,
+    openGraph: {
+      siteName: siteTitle || "Sunny Side Up",
+      type: "website",
+      title: siteTitle,
+      description: siteDescription,
+    },
+  };
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {

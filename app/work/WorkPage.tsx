@@ -22,8 +22,6 @@ export default function WorkPage({ workData, works = [] }: WorkPageProps) {
   useEffect(() => {
     const works = document.querySelectorAll(".works .work");
 
-    console.log("works: ", works);
-
     function handleMouseOver() {
       document.querySelector(".cursor")?.classList.add("view");
     }

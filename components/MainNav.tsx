@@ -5,7 +5,7 @@ import slateToHtml from "@/utils/slateToHtml";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface MainNavProps {
   siteBranding: Setting["siteBranding"];
@@ -32,15 +32,6 @@ const CloseIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
-
-const MenuIcon = () => (
-  <div className="grid grid-cols-2 gap-[3px]">
-    <div className="h-[2px] w-[2px] rounded-full bg-black" />
-    <div className="h-[2px] w-[2px] rounded-full bg-black" />
-    <div className="h-[2px] w-[2px] rounded-full bg-black" />
-    <div className="h-[2px] w-[2px] rounded-full bg-black" />
-  </div>
 );
 
 const modalVariants = {
@@ -79,43 +70,6 @@ export default function MainNav({
 }: MainNavProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
-    let curs: HTMLDivElement = document.querySelector(".cursor")!;
-    let initCursor = false;
-
-    function handleMove(e: MouseEvent) {
-      var mouseX = e.clientX;
-      var mouseY = e.clientY;
-
-      if (!initCursor) {
-        (window as any)?.TweenLite?.to(curs, 0.3, {
-          opacity: 1,
-        });
-        initCursor = true;
-      }
-
-      (window as any)?.TweenLite?.to(curs, 0.3, {
-        top: mouseY + "px",
-        left: mouseX + "px",
-      });
-    }
-
-    function handleMouseOut() {
-      (window as any)?.TweenLite?.to(curs, 0.3, {
-        opacity: 0,
-      });
-      initCursor = false;
-    }
-
-    document.addEventListener("mousemove", handleMove);
-    document.addEventListener("mouseout", handleMouseOut);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMove);
-      document.removeEventListener("mouseout", handleMouseOut);
-    };
-  }, []);
-
   return (
     <div
       className={clsx(
@@ -147,12 +101,6 @@ export default function MainNav({
             {item.label}
           </Link>
         ))}
-        {/* <Link
-          className={clsx(navLinkStyles, "w-9 cursor-pointer !px-0")}
-          href="/"
-        >
-          <MenuIcon />
-        </Link> */}
         {!contactLink.hide && (
           <div
             className={clsx(
@@ -199,7 +147,6 @@ export default function MainNav({
             >
               <CloseIcon />
             </div>
-            {/* <h5 className="my-1 text-base">{contact.heading}</h5> */}
             <div
               className="mb-3 pr-2 [&_p]:text-smaller [&_p]:leading-tightest [&_p]:tracking-tight"
               dangerouslySetInnerHTML={slateToHtml(contact.description)}
