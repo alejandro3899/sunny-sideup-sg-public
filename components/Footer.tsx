@@ -125,7 +125,6 @@ export default function Footer({
                     fill="white"
                   />
                 </svg>
-                {/* {bottomTitle} */}
               </m.h3>
             </m.div>
           </div>
