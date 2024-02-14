@@ -271,6 +271,14 @@ export interface About {
       id?: string;
     }[];
   };
+  partners: {
+    heading: string;
+    partner?: {
+      image: string | Image;
+      name: string;
+      id?: string;
+    }[];
+  };
   clients: {
     heading: string;
     sections?: {

@@ -14,8 +14,10 @@ interface AboutPageProps {
 }
 
 export default function AboutPage({ aboutData }: AboutPageProps) {
-  const { hero, intro, expertise, team, clients, recognition, work } =
+  const { hero, intro, expertise, team, partners, clients, recognition, work } =
     aboutData;
+
+  console.log(partners);
 
   return (
     <>
@@ -115,7 +117,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
             </Marquee>
           </m.section>
 
-          <div className="bg-white w-full cont flex flex-col gap-24 pb-20 overflow-hidden">
+          <div className="flex flex-col w-full gap-24 pb-20 overflow-hidden bg-white cont">
             <section className="w-full">
               <m.h2
                 className="mb-9"
@@ -146,7 +148,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                     />
                     <div>
                       <h4 className="mb-1 sm:mt-4">{section.title}</h4>
-                      <p className="p-small whitespace-pre-line">
+                      <p className="whitespace-pre-line p-small">
                         {section.items}
                       </p>
                     </div>
@@ -179,7 +181,37 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                       alt={(item.image as Image).altText}
                     />
                     <h4 className="mt-4 leading-[1.2]">{item.name}</h4>
-                    <p className="p-small mt-1">{item.title}</p>
+                    <p className="mt-1 p-small">{item.title}</p>
+                  </m.div>
+                ))}
+              </m.div>
+            </section>
+
+            <section>
+              <m.h2
+                className="mb-8"
+                variants={bottomIn()}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {partners!.heading}
+              </m.h2>
+              <m.div
+                className="grid grid-cols-2 gap-5 md:grid-cols-4"
+                variants={rightLeftContainer()}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {(partners!.partner ?? []).map((partner) => (
+                  <m.div key={partner.id} variants={rightLeft()}>
+                    <img
+                      src={(partner?.image as Image)?.imagekit?.url}
+                      alt={(partner.image as Image).altText}
+                      className="rounded-lg bg-[#EDEDED]"
+                    />
+                    <p className="mt-4 p-small">{partner.name}</p>
                   </m.div>
                 ))}
               </m.div>
@@ -211,7 +243,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
                       <div className="col-span-2">
                         <AnimatedLine />
                         <m.div
-                          className="flex grid-flow-col grid-cols-2 flex-col gap-y-1 gap-x-3 pt-8 sm:grid"
+                          className="flex flex-col grid-flow-col grid-cols-2 pt-8 gap-y-1 gap-x-3 sm:grid"
                           style={{
                             gridTemplateRows: `repeat(${Math.ceil(
                               clientList.length / 2
