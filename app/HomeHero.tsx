@@ -35,9 +35,9 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       >
         <div className="relative min-h-[100svh] w-full flex flex-col items-stretch pb-8 pt-[72px] overflow-hidden">
           <div className="model-display flex flex-row gap-[15%] justify-center">
-            <ModelViewer /> 
-            <ModelViewer />
-            <ModelViewer />
+            <ModelViewer key="m1"/> 
+            <ModelViewer key="m2"/>
+            <ModelViewer key="m3"/>
           </div>
           {/* <m.div className="absolute min-h-[100svh] inset-0 w-full h-full flex lg:hidden items-center justify-center pointer-events-none">
             <Image

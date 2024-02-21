@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { Canvas, useLoader } from "@react-three/fiber"
 import { Environment, OrbitControls, useTexture, useGLTF  } from "@react-three/drei"
+import { EffectComposer, N8AO } from "@react-three/postprocessing"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 
 const Model = () => {
@@ -22,13 +23,20 @@ export default function ModelViewer() {
   return (
         <div className="globe">
             <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
-                <ambientLight intensity={0.7} />
-                <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow />
+            <ambientLight intensity={1} />
+                <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[55, 55]} />
+    
+                <directionalLight position={[0, 5, -4]} intensity={4} />
+                <directionalLight position={[0, -15, -0]} intensity={4} color="white" />
                 <Suspense fallback={null}>
                     <Model />
                     {/* To add environment effect to the model */}
-                    <Environment preset="city" />
+                    <Environment files="/adamsbridge.hdr" />
                 </Suspense>
+                 <Environment preset="city" />
+                 <EffectComposer disableNormalPass>
+                  <N8AO color="white" aoRadius={2} intensity={1} />
+                </EffectComposer>
                 <OrbitControls autoRotate />
             </Canvas>
         </div>
