@@ -58,7 +58,12 @@ body * {
     @apply w-full;
   }
 }
-
+.globe {
+  display: grid;
+  place-items: end;
+  height: 50vh;
+  cursor: grabbing;
+}
 @layer components {
   .container {
     @apply mx-auto w-full px-4 sm:px-5;
