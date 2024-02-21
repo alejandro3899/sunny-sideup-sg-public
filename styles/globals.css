@@ -61,7 +61,6 @@ body * {
 .globe {
   display: grid;
   place-items: end;
-  height: 50vh;
   cursor: grabbing;
 }
 @layer components {

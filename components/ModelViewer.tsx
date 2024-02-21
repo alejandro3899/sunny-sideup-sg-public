@@ -11,7 +11,7 @@ const Model = () => {
   return (
     <>
       {/* Use scale to control the size of the 3D model */}
-      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.01} >
+      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.05} >
           <meshBasicMaterial map={ texture } />
       </mesh>
     </>
@@ -20,7 +20,7 @@ const Model = () => {
 
 export default function ModelViewer() {
   return (
-        <div className="globe" style={{backgroundColor: 'black'}}>
+        <div className="globe">
             <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
                 <ambientLight intensity={0.7} />
                 <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow />
