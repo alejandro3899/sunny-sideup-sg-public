@@ -11,7 +11,7 @@ const Model = () => {
   return (
     <>
       {/* Use scale to control the size of the 3D model */}
-      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.05} >
+      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.03} >
           <meshBasicMaterial map={ texture } />
       </mesh>
     </>

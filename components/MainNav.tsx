@@ -6,7 +6,6 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import ModelViewer from "./ModelViewer";
 
 interface MainNavProps {
   siteBranding: Setting["siteBranding"];
@@ -87,7 +86,6 @@ export default function MainNav({
       >
         {siteBranding}
       </Link>
-      <ModelViewer />
       <nav className="flex gap-3">
         {(navItems ?? []).map((item) => (
           <Link
