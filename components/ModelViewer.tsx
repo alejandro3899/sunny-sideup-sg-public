@@ -12,7 +12,7 @@ const Model = () => {
   return (
     <>
       {/* Use scale to control the size of the 3D model */}
-      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.03} >
+      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.05} >
           <meshBasicMaterial map={ texture } />
       </mesh>
     </>
@@ -22,22 +22,20 @@ const Model = () => {
 export default function ModelViewer() {
   return (
         <div className="globe">
-            <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
-            <ambientLight intensity={1} />
+            <Canvas shadows camera={{ position: [0, 0, 4], fov: 45 }} style={{width: `400px`}}>
+                <ambientLight intensity={1} />
                 <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[55, 55]} />
     
                 <directionalLight position={[0, 5, -4]} intensity={4} />
                 <directionalLight position={[0, -15, -0]} intensity={4} color="white" />
                 <Suspense fallback={null}>
                     <Model />
-                    {/* To add environment effect to the model */}
-                    <Environment files="/adamsbridge.hdr" />
                 </Suspense>
                  <Environment preset="city" />
                  <EffectComposer disableNormalPass>
                   <N8AO color="white" aoRadius={2} intensity={1} />
                 </EffectComposer>
-                <OrbitControls autoRotate />
+                <OrbitControls autoRotate autoRotateSpeed={0.6}/>
             </Canvas>
         </div>
   )

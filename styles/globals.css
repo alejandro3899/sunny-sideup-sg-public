@@ -59,10 +59,23 @@ body * {
   }
 }
 .globe {
-  display: grid;
   cursor: grabbing;
   height: 50vh;
+  z-index: 15;
 }
+
+.model-display {
+  position: relative;
+  animation: leftright 40s infinite ease-in-out;
+}
+
+@keyframes leftright {
+  100% {
+    transform: translateX(100%);
+    left: -100%;
+  }
+}
+
 @layer components {
   .container {
     @apply mx-auto w-full px-4 sm:px-5;

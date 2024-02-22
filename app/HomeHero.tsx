@@ -33,11 +33,14 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
         data-theme="dark"
         className="w-full bg-black text-white overflow-hidden"
       >
-        <div className="relative min-h-[100svh] w-full flex flex-col items-stretch pb-8 pt-[72px] overflow-hidden">
-          <div className="model-display flex flex-row gap-[15%] justify-center">
+        <div className="relative min-h-[100svh] w-full flex flex-col items-stretch pt-[72px]">
+          <div className="model-display flex flex-row gap-[5%] justify-center overflow-hidden">
             <ModelViewer key="m1"/> 
-            <ModelViewer key="m2"/>
-            <ModelViewer key="m3"/>
+            <ModelViewer key="m2"/> 
+            <ModelViewer key="m3"/> 
+            <ModelViewer key="m4"/> 
+            <ModelViewer key="m5"/> 
+            <ModelViewer key="m6"/> 
           </div>
           {/* <m.div className="absolute min-h-[100svh] inset-0 w-full h-full flex lg:hidden items-center justify-center pointer-events-none">
             <Image
