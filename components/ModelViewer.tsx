@@ -22,7 +22,7 @@ const Model = () => {
 export default function ModelViewer() {
   return (
         <div className="globe">
-            <Canvas shadows camera={{ position: [0, 0, 4], fov: 45 }} style={{width: `400px`}}>
+            <Canvas shadows camera={{ position: [0, 0, 4], fov: 50 }} style={{width: `450px`}}>
                 <ambientLight intensity={1} />
                 <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[55, 55]} />
     

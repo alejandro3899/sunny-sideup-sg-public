@@ -34,7 +34,7 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
         className="w-full bg-black text-white overflow-hidden"
       >
         <div className="relative min-h-[100svh] w-full flex flex-col items-stretch pt-[72px]">
-          <div className="model-display flex flex-row gap-[5%] justify-center overflow-hidden">
+          <div className="model-display flex flex-row gap-[5%] justify-center">
             <ModelViewer key="m1"/> 
             <ModelViewer key="m2"/> 
             <ModelViewer key="m3"/> 
