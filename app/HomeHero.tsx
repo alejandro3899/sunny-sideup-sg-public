@@ -35,12 +35,13 @@ export default function HomeHero({ hero }: { hero: Homepage["hero"] }) {
       >
         <div className="relative min-h-[100svh] w-full flex flex-col items-stretch pt-[72px]">
           <div className="model-display flex flex-row gap-[5%] justify-center">
-            <ModelViewer key="m1"/> 
-            <ModelViewer key="m2"/> 
-            <ModelViewer key="m3"/> 
-            <ModelViewer key="m4"/> 
-            <ModelViewer key="m5"/> 
-            <ModelViewer key="m6"/> 
+            <ModelViewer pitchSpeed={0.02}/> 
+            <ModelViewer pitchSpeed={0.015}/> 
+            <ModelViewer pitchSpeed={0.025}/> 
+            <ModelViewer pitchSpeed={0.01}/> 
+            <ModelViewer pitchSpeed={0.03}/> 
+            <ModelViewer pitchSpeed={0.005}/> 
+            <ModelViewer pitchSpeed={0.02}/> 
           </div>
           {/* <m.div className="absolute min-h-[100svh] inset-0 w-full h-full flex lg:hidden items-center justify-center pointer-events-none">
             <Image
