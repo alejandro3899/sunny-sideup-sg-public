@@ -1,4 +1,4 @@
-import { Suspense, useRef } from "react"
+import { Suspense, useRef, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Environment, OrbitControls, useTexture, useGLTF  } from "@react-three/drei"
 import { EffectComposer, N8AO } from "@react-three/postprocessing"
@@ -8,21 +8,25 @@ export type ModelViewerProps = {
 };
 const Model = ({pitchSpeed}: ModelViewerProps) => {
   const modelRef = useRef()
+  const [isHovered, setHovered] = useState(false);
 
-  useFrame(() => {
-    modelRef.current.rotation.y += pitchSpeed * 0.3
-    modelRef.current.rotation.x += pitchSpeed * 0.01
+  useFrame((mouse) => {
+    const mouseX = mouse.mouse.x;
+    const mouseY = mouse.mouse.y;
+    const pitchAngleX = isHovered ? (mouseY / window.innerHeight) * 500 : 0;
+    const pitchAngleY = isHovered ? (mouseX / window.innerWidth) * 500 : 0;
+    modelRef.current.rotation.y += pitchSpeed * 0.3 + pitchAngleY
+    modelRef.current.rotation.x += pitchSpeed * 0.01 + pitchAngleX
     modelRef.current.rotation.z -= pitchSpeed * 0.05
   })
   // location of the 3D model
   const { nodes } = useGLTF("/SmileFriedEgg.gltf");
   const texture = useTexture('./textures/SmileFriedEgg_BaseColor.png');
   texture.flipY = false;
-  texture.flipX = false;
   return (
     <>
       {/* Use scale to control the size of the 3D model */}
-      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.045} ref={modelRef} >
+      <mesh geometry={ nodes.SmileFriedEgg.geometry } scale={0.045} ref={modelRef} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)} >
           <meshBasicMaterial map={ texture } />
       </mesh>
     </>
@@ -45,7 +49,7 @@ export default function ModelViewer({pitchSpeed}: ModelViewerProps) {
                  <EffectComposer disableNormalPass>
                   <N8AO color="white" aoRadius={2} intensity={1} />
                 </EffectComposer>
-                <OrbitControls enableZoom={false} rotateSpeed={0.1} autoRotate enableDamping={true} />
+                <OrbitControls enableZoom={false} rotateSpeed={0.1} autoRotate />
             </Canvas>
         </div>
   )
