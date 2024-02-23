@@ -66,13 +66,15 @@ body * {
 
 .model-display {
   position: relative;
-  animation: leftright 40s infinite ease-in-out;
+  animation: leftright 40s linear infinite;
 }
 
 @keyframes leftright {
+  0% {
+    transform: translateX(-100%);
+  }
   100% {
     transform: translateX(100%);
-    left: -70%;
   }
 }
 
